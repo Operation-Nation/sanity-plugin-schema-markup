@@ -90,7 +90,7 @@ const article = defineType({
           title: 'Type',
           type: 'string',
           hidden: true,
-          initialValue: 'Organisation',
+          initialValue: 'Organization',
         }),
         defineField({
           name: 'name',
@@ -100,21 +100,7 @@ const article = defineType({
         defineField({
           name: 'logo',
           title: 'Logo',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'ImageObject',
-              title: 'ImageObject',
-              type: 'string',
-              hidden: true,
-              initialValue: 'Organisation',
-            }),
-            defineField({
-              name: 'url',
-              title: 'Url',
-              type: 'url',
-            }),
-          ],
+          type: 'url',
         }),
       ],
     }),

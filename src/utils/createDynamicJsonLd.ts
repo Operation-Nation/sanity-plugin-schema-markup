@@ -11,7 +11,7 @@ type JsonLdObject = {
 
 function createDynamicJsonLd(schemaObj: Schema) {
   const pattern = detectSchemaType(schemaObj)
-  const obj = matchAndRemoveKeys(schemaObj, pattern)
+  const obj = schemaObj
   const jsonLd: JsonLdObject = {
     '@type': obj.type,
   }
@@ -32,7 +32,7 @@ function createDynamicJsonLd(schemaObj: Schema) {
       }
     }
   }
-  return jsonLd
+  return matchAndRemoveKeys(jsonLd, pattern)
 }
 
 export default createDynamicJsonLd
