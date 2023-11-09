@@ -11,10 +11,10 @@ const organization = {
       contactType: 'string',
       contactOption: ['string', 'string'],
       areaServed: ['string', 'string'],
-      availableLanguage: ['string', 'string'],
-    },
+      availableLanguage: ['string', 'string']
+    }
   ],
-  sameAs: ['string', 'string'],
-}
+  sameAs: ['string', 'string']
+};
 
-export default organization
+export default organization;

@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import { defineType, defineField } from 'sanity';
 
 const article = defineType({
   name: 'article',
@@ -13,36 +13,36 @@ const article = defineType({
         list: [
           {
             title: 'Article',
-            value: 'Article',
+            value: 'Article'
           },
           {
             title: 'NewsArticle',
-            value: 'NewsArticle',
+            value: 'NewsArticle'
           },
           {
             title: 'BlogPosting',
-            value: 'BlogPosting',
-          },
+            value: 'BlogPosting'
+          }
         ],
-        layout: 'radio',
+        layout: 'radio'
       },
-      initialValue: 'Article',
+      initialValue: 'Article'
     }),
     defineField({
       name: 'headline',
       title: 'Headline',
-      type: 'string',
+      type: 'string'
     }),
     defineField({
       name: 'description',
       title: 'Short Description of the Article',
-      type: 'text',
+      type: 'text'
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'array',
-      of: [{type: 'url'}],
+      of: [{ type: 'url' }]
     }),
     defineField({
       name: 'author',
@@ -57,28 +57,28 @@ const article = defineType({
             list: [
               {
                 title: 'Person',
-                value: 'Person',
+                value: 'Person'
               },
               {
                 title: 'Organisation',
-                value: 'Organisation',
-              },
+                value: 'Organisation'
+              }
             ],
-            layout: 'radio',
+            layout: 'radio'
           },
-          initialValue: 'Person',
+          initialValue: 'Person'
         }),
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string',
+          type: 'string'
         }),
         defineField({
           name: 'url',
           title: 'Url',
-          type: 'url',
-        }),
-      ],
+          type: 'url'
+        })
+      ]
     }),
     defineField({
       name: 'publisher',
@@ -90,19 +90,19 @@ const article = defineType({
           title: 'Type',
           type: 'string',
           hidden: true,
-          initialValue: 'Organization',
+          initialValue: 'Organization'
         }),
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string',
+          type: 'string'
         }),
         defineField({
           name: 'logo',
           title: 'Logo',
-          type: 'url',
-        }),
-      ],
+          type: 'url'
+        })
+      ]
     }),
     defineField({
       name: 'datePublished',
@@ -111,8 +111,8 @@ const article = defineType({
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
-        timeStep: 15,
-      },
+        timeStep: 15
+      }
     }),
     defineField({
       name: 'dateModified',
@@ -121,10 +121,10 @@ const article = defineType({
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
-        timeStep: 15,
-      },
-    }),
-  ],
-})
+        timeStep: 15
+      }
+    })
+  ]
+});
 
-export default article
+export default article;

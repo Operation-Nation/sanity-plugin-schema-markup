@@ -1,6 +1,6 @@
-import {defineType, defineField} from 'sanity'
-import organizationType from './list/organizationType'
-import contactPoint from './contactPoint'
+import { defineType, defineField } from 'sanity';
+import organizationType from './list/organizationType';
+import contactPoint from './contactPoint';
 
 const organization = defineType({
   name: 'organization',
@@ -12,29 +12,29 @@ const organization = defineType({
       title: 'Type',
       type: 'string',
       options: {
-        list: organizationType,
+        list: organizationType
       },
-      initialValue: 'Organization',
+      initialValue: 'Organization'
     }),
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string',
+      type: 'string'
     }),
     defineField({
       name: 'alternateName',
       title: 'Alternate Name',
-      type: 'string',
+      type: 'string'
     }),
     defineField({
       name: 'url',
       title: 'Url',
-      type: 'url',
+      type: 'url'
     }),
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'url',
+      type: 'url'
     }),
     contactPoint,
     defineField({
@@ -42,9 +42,9 @@ const organization = defineType({
       title: 'Social Profiles',
       description: 'Add social profile url on each field',
       type: 'array',
-      of: [{type: 'string'}],
-    }),
-  ],
-})
+      of: [{ type: 'string' }]
+    })
+  ]
+});
 
-export default organization
+export default organization;

@@ -1,20 +1,20 @@
 const availableLanguage = [
   {
     title: 'English',
-    value: 'en',
+    value: 'en'
   },
   {
     title: 'Spanish',
-    value: 'es',
+    value: 'es'
   },
   {
     title: 'French',
-    value: 'fr',
+    value: 'fr'
   },
   {
     title: 'Bengali',
-    value: 'Bengali',
-  },
-]
+    value: 'Bengali'
+  }
+];
 
-export default availableLanguage
+export default availableLanguage;

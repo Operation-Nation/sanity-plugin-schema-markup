@@ -1,7 +1,7 @@
-import {defineField} from 'sanity'
-import contactType from './list/contactType'
-import areaServed from './list/areaServed'
-import availableLanguage from './list/availableLanguage'
+import { defineField } from 'sanity';
+import contactType from './list/contactType';
+import areaServed from './list/areaServed';
+import availableLanguage from './list/availableLanguage';
 
 const contactPoint = defineField({
   name: 'contactPoint',
@@ -19,65 +19,65 @@ const contactPoint = defineField({
           title: 'Type',
           type: 'string',
           hidden: true,
-          initialValue: 'ContactPoint',
+          initialValue: 'ContactPoint'
         }),
         defineField({
           name: 'telephone',
           title: 'Telephone',
-          type: 'string',
+          type: 'string'
         }),
         defineField({
           name: 'contactType',
           title: 'Contact Type',
           type: 'string',
           options: {
-            list: contactType,
+            list: contactType
           },
-          initialValue: 'customer service',
+          initialValue: 'customer service'
         }),
         defineField({
           name: 'contactOption',
           title: 'Contact Option',
           type: 'array',
-          of: [{type: 'string'}],
+          of: [{ type: 'string' }],
           options: {
             list: [
               {
                 title: 'Toll Free',
-                value: 'TollFree',
+                value: 'TollFree'
               },
               {
                 title: 'Hearing Impaired Supported',
-                value: 'HearingImpairedSupported',
-              },
-            ],
-          },
+                value: 'HearingImpairedSupported'
+              }
+            ]
+          }
         }),
         defineField({
           name: 'areaServed',
           title: 'Area Served',
           type: 'array',
-          of: [{type: 'string'}],
+          of: [{ type: 'string' }],
           options: {
             layout: 'grid',
             list: areaServed,
-            modal: {type: 'dialog', width: 'auto'},
-          },
+            modal: { type: 'dialog', width: 'auto' }
+          }
         }),
         defineField({
           name: 'availableLanguage',
           title: 'Available Language',
           type: 'array',
-          of: [{type: 'string'}],
+          of: [{ type: 'string' }],
           options: {
             layout: 'grid',
             list: availableLanguage,
-            modal: {type: 'dialog', width: 'auto'},
-          },
-        }),
-      ],
-    },
-  ],
-})
+            modal: { type: 'dialog', width: 'auto' }
+          }
+        })
+      ]
+    }
+  ]
+});
 
-export default contactPoint
+export default contactPoint;

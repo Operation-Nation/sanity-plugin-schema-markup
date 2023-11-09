@@ -1,27 +1,32 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   plugins: ['prettier', '@typescript-eslint', 'jest'],
   extends: [
     'prettier',
     'airbnb',
     'airbnb-typescript',
+    '@sanity/eslint-config-studio',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 12,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: true, optionalDependencies: true, peerDependencies: true }
+    ],
     'react/prop-types': 'off', // Since we do not use prop-types
     'react/require-default-props': 'off', // Since we do not use prop-types
     'no-underscore-dangle': 'off',
@@ -29,8 +34,8 @@ module.exports = {
       2,
       {
         namedComponents: ['arrow-function', 'function-declaration'],
-        unnamedComponents: 'arrow-function',
-      },
+        unnamedComponents: 'arrow-function'
+      }
     ],
     'no-unused-vars': 'warn',
     'react/jsx-props-no-spreading': 'off',
@@ -38,7 +43,8 @@ module.exports = {
       'error',
       {
         printWidth: 100,
-      },
-    ],
-  },
-}
+        endOfLine: 'auto'
+      }
+    ]
+  }
+};

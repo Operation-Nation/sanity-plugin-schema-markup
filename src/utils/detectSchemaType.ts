@@ -1,16 +1,16 @@
-import article from '../schemaTypes/article'
-import organization from '../schemaTypes/organization'
+import article from '../schemaTypes/article';
+import organization from '../schemaTypes/organization';
 
 type Props = {
-  [key: string]: string
-}
+  [key: string]: string;
+};
 
 const detectSchemaType = (schema: Props) => {
   switch (schema.type) {
     case 'Article':
     case 'NewsArticle':
     case 'BlogPosting':
-      return article
+      return article;
     case 'Organization':
     case 'Airline':
     case 'Consortium':
@@ -24,10 +24,10 @@ const detectSchemaType = (schema: Props) => {
     case 'NewsMediaOrganization':
     case 'PerformingGroup':
     case 'Project':
-      return organization
+      return organization;
     default:
-      return undefined
+      return undefined;
   }
-}
+};
 
-export default detectSchemaType
+export default detectSchemaType;

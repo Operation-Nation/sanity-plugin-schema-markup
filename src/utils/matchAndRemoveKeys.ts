@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type NestedObj = Record<string, any>
+type NestedObj = Record<string, any>;
 function matchAndRemoveKeys(obj: NestedObj, pattern?: NestedObj) {
   if (typeof pattern !== 'object' || pattern === undefined) {
-    return obj
+    return obj;
   }
-  const matchedObj = {} as NestedObj
+  const matchedObj = {} as NestedObj;
   // eslint-disable-next-line no-restricted-syntax
   for (const key in pattern) {
     if (key in obj) {
       if (Array.isArray(obj[key]) && typeof obj[key][0] === 'string') {
-        matchedObj[key] = obj[key]
+        matchedObj[key] = obj[key];
       } else {
-        matchedObj[key] = matchAndRemoveKeys(obj[key], pattern[key])
+        matchedObj[key] = matchAndRemoveKeys(obj[key], pattern[key]);
       }
     }
   }
 
-  return matchedObj
+  return matchedObj;
 }
 
-export default matchAndRemoveKeys
+export default matchAndRemoveKeys;

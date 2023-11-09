@@ -1,27 +1,28 @@
 {
-  "extends": "./tsconfig.settings",
-  "include": ["./src", "./package.config.ts"],
   "compilerOptions": {
-    "rootDir": ".",
-    "jsx": "preserve",
-    "noEmit": true,
-    "target": "es6",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noImplicitAny": false,
+    "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@types/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"]
-    }
-  }
+      "@schemas/*": ["src/schemas/*"],
+      "@schemaTypes/*": ["src/schemaTypes/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "incremental": true
+  },
+  "include": ["./src", "./package.config.ts", "./.eslintrc.js"],
+  "exclude": ["node_modules"]
 }

@@ -1,55 +1,55 @@
 const organizationType = [
   {
     title: 'Organization',
-    value: 'Organization',
+    value: 'Organization'
   },
   {
     title: 'Airline',
-    value: 'Airline',
+    value: 'Airline'
   },
   {
     title: 'Consortium',
-    value: 'Consortium',
+    value: 'Consortium'
   },
   {
     title: 'Corporation',
-    value: 'Corporation',
+    value: 'Corporation'
   },
   {
     title: 'EducationalOrganization',
-    value: 'EducationalOrganization',
+    value: 'EducationalOrganization'
   },
   {
     title: 'FundingScheme',
-    value: 'FundingScheme',
+    value: 'FundingScheme'
   },
   {
     title: 'GovernmentOrganization',
-    value: 'GovernmentOrganization',
+    value: 'GovernmentOrganization'
   },
   {
     title: 'LibrarySystem',
-    value: 'LibrarySystem',
+    value: 'LibrarySystem'
   },
   {
     title: 'MedicalOrganization',
-    value: 'MedicalOrganization',
+    value: 'MedicalOrganization'
   },
   {
     title: 'NGO',
-    value: 'NGO',
+    value: 'NGO'
   },
   {
     title: 'NewsMediaOrganization',
-    value: 'NewsMediaOrganization',
+    value: 'NewsMediaOrganization'
   },
   {
     title: 'PerformingGroup',
-    value: 'PerformingGroup',
+    value: 'PerformingGroup'
   },
   {
     title: 'Project',
-    value: 'Project',
-  },
-]
-export default organizationType
+    value: 'Project'
+  }
+];
+export default organizationType;

@@ -1,20 +1,20 @@
 const areaServed = [
   {
     title: 'United States',
-    value: 'US',
+    value: 'US'
   },
   {
     title: 'United Kingdom',
-    value: 'GB',
+    value: 'GB'
   },
   {
     title: 'Canada',
-    value: 'CA',
+    value: 'CA'
   },
   {
     title: 'Bangladesh',
-    value: 'BD',
-  },
-]
+    value: 'BD'
+  }
+];
 
-export default areaServed
+export default areaServed;

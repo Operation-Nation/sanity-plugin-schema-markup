@@ -1,43 +1,43 @@
 const contactType = [
   {
     title: 'Customer Service',
-    value: 'customer service',
+    value: 'customer service'
   },
   {
     title: 'Technical support',
-    value: 'technical support',
+    value: 'technical support'
   },
   {
     title: 'Billing Support',
-    value: 'billing support',
+    value: 'billing support'
   },
   {
     title: 'Bill Payment',
-    value: 'bill payment',
+    value: 'bill payment'
   },
   {
     title: 'Sales',
-    value: 'sales',
+    value: 'sales'
   },
   {
     title: 'Reservations',
-    value: 'reservations',
+    value: 'reservations'
   },
   {
     title: 'Credit Card Support"',
-    value: 'credit card support"',
+    value: 'credit card support"'
   },
   {
     title: 'Emergency',
-    value: 'emergency',
+    value: 'emergency'
   },
   {
     title: 'Baggage Tracking',
-    value: 'baggage tracking',
+    value: 'baggage tracking'
   },
   {
     title: 'Roadside Assistance',
-    value: 'roadside assistance',
-  },
-]
-export default contactType
+    value: 'roadside assistance'
+  }
+];
+export default contactType;

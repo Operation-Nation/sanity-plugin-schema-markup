@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
-import {Box, Stack, Button, Dialog} from '@sanity/ui'
-import {ArrayOfObjectsInputProps} from 'sanity'
+import React, { useState } from 'react';
+import { Box, Stack, Button, Dialog } from '@sanity/ui';
+import { ArrayOfObjectsInputProps } from 'sanity';
 
 const SchemaMarkup = (schemaMarkupProps: ArrayOfObjectsInputProps) => {
-  const {renderDefault} = schemaMarkupProps
-  const [open, setOpen] = useState(false)
+  const { renderDefault } = schemaMarkupProps;
+  const [open, setOpen] = useState(false);
   const handleDialog = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   return (
     <Stack space={3} marginTop={2}>
@@ -25,7 +25,7 @@ const SchemaMarkup = (schemaMarkupProps: ArrayOfObjectsInputProps) => {
         )}
       </Box>
     </Stack>
-  )
-}
+  );
+};
 
-export default SchemaMarkup
+export default SchemaMarkup;
