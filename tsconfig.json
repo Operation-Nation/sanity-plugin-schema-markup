@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "esnext",
+    "emitDeclarationOnly": true,
+    "downlevelIteration": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": ".",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -19,7 +23,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@schemas/*": ["src/schemas/*"],
-      "@schemaTypes/*": ["src/schemaTypes/*"],
+      "@patterns/*": ["src/patterns/*"],
       "@utils/*": ["src/utils/*"]
     },
     "incremental": true

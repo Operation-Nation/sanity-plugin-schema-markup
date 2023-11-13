@@ -5,7 +5,12 @@ const schema = defineType({
   title: 'Schema Markup',
   name: 'schemaMarkup',
   type: 'array',
-  of: [{ type: 'article' }, { type: 'organization' }],
+  of: [
+    { type: 'article' },
+    { type: 'organization' },
+    { type: 'localBusiness' },
+    { type: 'breadcrumbList' }
+  ],
   description: 'This icon will be used as a graphic element in the design on the front end',
   components: { input: SchemaMarkup }
 });

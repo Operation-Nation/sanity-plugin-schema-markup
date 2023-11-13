@@ -22,6 +22,11 @@ const contactPoint = defineField({
           initialValue: 'ContactPoint'
         }),
         defineField({
+          name: 'id',
+          title: 'Id',
+          type: 'string'
+        }),
+        defineField({
           name: 'telephone',
           title: 'Telephone',
           type: 'string'

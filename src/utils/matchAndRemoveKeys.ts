@@ -10,6 +10,10 @@ function matchAndRemoveKeys(obj: NestedObj, pattern?: NestedObj) {
     if (key in obj) {
       if (Array.isArray(obj[key]) && typeof obj[key][0] === 'string') {
         matchedObj[key] = obj[key];
+      } else if (Array.isArray(obj[key]) && typeof obj[key][0] === 'object') {
+        matchedObj[key] = obj[key].map((item: NestedObj) =>
+          matchAndRemoveKeys(item, pattern[key][0])
+        );
       } else {
         matchedObj[key] = matchAndRemoveKeys(obj[key], pattern[key]);
       }

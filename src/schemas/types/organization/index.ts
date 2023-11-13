@@ -1,6 +1,6 @@
 import { defineType, defineField } from 'sanity';
-import organizationType from './list/organizationType';
 import contactPoint from './contactPoint';
+import OrganizationListSelect from './OrganizationListSelect';
 
 const organization = defineType({
   name: 'organization',
@@ -11,10 +11,15 @@ const organization = defineType({
       name: 'type',
       title: 'Type',
       type: 'string',
-      options: {
-        list: organizationType
+      components: {
+        input: OrganizationListSelect
       },
       initialValue: 'Organization'
+    }),
+    defineField({
+      name: 'id',
+      title: 'Id',
+      type: 'string'
     }),
     defineField({
       name: 'name',

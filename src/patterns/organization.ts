@@ -1,5 +1,6 @@
 const organization = {
   '@type': 'string',
+  '@id': 'string',
   name: 'string',
   alternateName: 'string',
   url: 'string',
@@ -7,6 +8,7 @@ const organization = {
   contactPoint: [
     {
       '@type': 'string',
+      '@id': 'string',
       telephone: 'string',
       contactType: 'string',
       contactOption: ['string', 'string'],

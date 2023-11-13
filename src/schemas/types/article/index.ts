@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import ArticleListSelect from './ArticleListSelect';
 
 const article = defineType({
   name: 'article',
@@ -9,24 +10,15 @@ const article = defineType({
       name: 'type',
       title: 'Type',
       type: 'string',
-      options: {
-        list: [
-          {
-            title: 'Article',
-            value: 'Article'
-          },
-          {
-            title: 'NewsArticle',
-            value: 'NewsArticle'
-          },
-          {
-            title: 'BlogPosting',
-            value: 'BlogPosting'
-          }
-        ],
-        layout: 'radio'
+      components: {
+        input: ArticleListSelect
       },
       initialValue: 'Article'
+    }),
+    defineField({
+      name: 'id',
+      title: 'Id',
+      type: 'string'
     }),
     defineField({
       name: 'headline',
@@ -63,10 +55,14 @@ const article = defineType({
                 title: 'Organisation',
                 value: 'Organisation'
               }
-            ],
-            layout: 'radio'
+            ]
           },
           initialValue: 'Person'
+        }),
+        defineField({
+          name: 'id',
+          title: 'Id',
+          type: 'string'
         }),
         defineField({
           name: 'name',
@@ -91,6 +87,11 @@ const article = defineType({
           type: 'string',
           hidden: true,
           initialValue: 'Organization'
+        }),
+        defineField({
+          name: 'id',
+          title: 'Id',
+          type: 'string'
         }),
         defineField({
           name: 'name',
