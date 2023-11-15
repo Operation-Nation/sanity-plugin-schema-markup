@@ -1,4 +1,5 @@
 import { defineField } from 'sanity';
+import TimePicker from '../../../components/TimePicker';
 
 const openingHoursSpecification = defineField({
   name: 'openingHoursSpecification',
@@ -58,14 +59,18 @@ const openingHoursSpecification = defineField({
         defineField({
           name: 'opens',
           title: 'Opens at (e.g. 08:00)',
-          // @todo add custom time component
-          type: 'string'
+          type: 'string',
+          components: {
+            input: TimePicker
+          }
         }),
         defineField({
           name: 'closes',
           title: 'Closes at (e.g. 17:30)',
-          // @todo add custom time component
-          type: 'string'
+          type: 'string',
+          components: {
+            input: TimePicker
+          }
         })
       ]
     }

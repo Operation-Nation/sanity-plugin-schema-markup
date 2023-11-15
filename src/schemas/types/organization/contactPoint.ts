@@ -1,7 +1,6 @@
 import { defineField } from 'sanity';
 import contactType from './list/contactType';
-import areaServed from './list/areaServed';
-import availableLanguage from './list/availableLanguage';
+import id from '../../common/id';
 
 const contactPoint = defineField({
   name: 'contactPoint',
@@ -20,11 +19,6 @@ const contactPoint = defineField({
           type: 'string',
           hidden: true,
           initialValue: 'ContactPoint'
-        }),
-        defineField({
-          name: 'id',
-          title: 'Id',
-          type: 'string'
         }),
         defineField({
           name: 'telephone',
@@ -61,25 +55,18 @@ const contactPoint = defineField({
         defineField({
           name: 'areaServed',
           title: 'Area Served',
+          description: 'Country name in ISO 3166-2 format. (e.g "US")',
           type: 'array',
-          of: [{ type: 'string' }],
-          options: {
-            layout: 'grid',
-            list: areaServed,
-            modal: { type: 'dialog', width: 'auto' }
-          }
+          of: [{ type: 'string' }]
         }),
         defineField({
           name: 'availableLanguage',
           title: 'Available Language',
+          description: 'Language in short form  (e.g "en")',
           type: 'array',
-          of: [{ type: 'string' }],
-          options: {
-            layout: 'grid',
-            list: availableLanguage,
-            modal: { type: 'dialog', width: 'auto' }
-          }
-        })
+          of: [{ type: 'string' }]
+        }),
+        id
       ]
     }
   ]

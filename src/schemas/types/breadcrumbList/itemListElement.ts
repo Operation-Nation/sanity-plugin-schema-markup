@@ -1,4 +1,5 @@
 import { defineField } from 'sanity';
+import id from '../../common/id';
 
 const itemListElement = defineField({
   name: 'itemListElement',
@@ -15,13 +16,8 @@ const itemListElement = defineField({
           name: 'type',
           title: 'Type',
           type: 'string',
-          // hidden: true,
+          hidden: true,
           initialValue: 'ListItem'
-        }),
-        defineField({
-          name: 'id',
-          title: 'Id',
-          type: 'string'
         }),
         defineField({
           name: 'name',
@@ -32,7 +28,8 @@ const itemListElement = defineField({
           name: 'item',
           title: 'Url',
           type: 'url'
-        })
+        }),
+        id
       ]
     }
   ]

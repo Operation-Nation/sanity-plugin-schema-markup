@@ -1,6 +1,7 @@
 const localBusiness = {
   '@type': 'string',
   name: 'string',
+  logo: 'string',
   image: 'string',
   '@id': 'string',
   url: 'string',

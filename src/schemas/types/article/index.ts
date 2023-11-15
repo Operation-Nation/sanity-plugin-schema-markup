@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity';
 import ArticleListSelect from './ArticleListSelect';
+import id from '../../common/id';
 
 const article = defineType({
   name: 'article',
@@ -16,11 +17,6 @@ const article = defineType({
       initialValue: 'Article'
     }),
     defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'string'
-    }),
-    defineField({
       name: 'headline',
       title: 'Headline',
       type: 'string'
@@ -34,7 +30,7 @@ const article = defineType({
       name: 'image',
       title: 'Image',
       type: 'array',
-      of: [{ type: 'url' }]
+      of: [{ type: 'image' }]
     }),
     defineField({
       name: 'author',
@@ -59,11 +55,7 @@ const article = defineType({
           },
           initialValue: 'Person'
         }),
-        defineField({
-          name: 'id',
-          title: 'Id',
-          type: 'string'
-        }),
+        id,
         defineField({
           name: 'name',
           title: 'Name',
@@ -88,11 +80,7 @@ const article = defineType({
           hidden: true,
           initialValue: 'Organization'
         }),
-        defineField({
-          name: 'id',
-          title: 'Id',
-          type: 'string'
-        }),
+        id,
         defineField({
           name: 'name',
           title: 'Name',
@@ -101,7 +89,7 @@ const article = defineType({
         defineField({
           name: 'logo',
           title: 'Logo',
-          type: 'url'
+          type: 'image'
         })
       ]
     }),
@@ -124,7 +112,8 @@ const article = defineType({
         timeFormat: 'HH:mm',
         timeStep: 15
       }
-    })
+    }),
+    id
   ]
 });
 

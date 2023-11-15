@@ -1,6 +1,7 @@
 import { defineType, defineField } from 'sanity';
 import contactPoint from './contactPoint';
 import OrganizationListSelect from './OrganizationListSelect';
+import id from '../../common/id';
 
 const organization = defineType({
   name: 'organization',
@@ -15,11 +16,6 @@ const organization = defineType({
         input: OrganizationListSelect
       },
       initialValue: 'Organization'
-    }),
-    defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'string'
     }),
     defineField({
       name: 'name',
@@ -39,7 +35,7 @@ const organization = defineType({
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'url'
+      type: 'image'
     }),
     contactPoint,
     defineField({
@@ -48,7 +44,8 @@ const organization = defineType({
       description: 'Add social profile url on each field',
       type: 'array',
       of: [{ type: 'string' }]
-    })
+    }),
+    id
   ]
 });
 

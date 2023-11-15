@@ -1,6 +1,7 @@
 import { defineType, defineField } from 'sanity';
 import LocalBusinessListSelect from './LocalBusinessListSelect';
 import openingHoursSpecification from './openingHoursSpecification';
+import id from '../../common/id';
 
 const localBusiness = defineType({
   name: 'localBusiness',
@@ -17,11 +18,6 @@ const localBusiness = defineType({
       initialValue: 'ProfessionalService'
     }),
     defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'string'
-    }),
-    defineField({
       name: 'name',
       title: 'Name',
       type: 'string'
@@ -34,12 +30,12 @@ const localBusiness = defineType({
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'url'
+      type: 'image'
     }),
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'url'
+      type: 'image'
     }),
     defineField({
       name: 'priceRange',
@@ -126,7 +122,8 @@ const localBusiness = defineType({
       description: 'Add social profile url on each field',
       type: 'array',
       of: [{ type: 'string' }]
-    })
+    }),
+    id
   ]
 });
 

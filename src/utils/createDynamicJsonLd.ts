@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import detectSchemaType from './detectSchemaType';
 import matchAndRemoveKeys from './matchAndRemoveKeys';
+import createImgUrl from './createImgUrl';
 
 type Schema = Record<string, any>;
 
@@ -9,9 +10,10 @@ type JsonLdObject = {
   '@type': string;
 };
 
-function createDynamicJsonLd(schemaObj: Schema) {
+function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: string) {
   const pattern = detectSchemaType(schemaObj);
   const obj = schemaObj;
+  const { getImgUrl } = createImgUrl(projectId, dataset);
   const jsonLd: JsonLdObject = obj.id
     ? { '@id': obj.id, '@type': obj.type }
     : {
@@ -24,14 +26,28 @@ function createDynamicJsonLd(schemaObj: Schema) {
       const value = obj[prop];
       if (value) {
         if (typeof value === 'object' && !Array.isArray(value)) {
-          jsonLd[prop] = value.id
-            ? { '@id': value.id, '@type': value.type, ...value }
-            : {
-                '@type': value.type,
-                ...value
-              };
+          if (value.logo) {
+            const { logo, ...rest } = value;
+            const imgUrl = getImgUrl(value?.logo?.asset?._ref);
+            jsonLd[prop] = {
+              logo: imgUrl,
+              ...rest
+            };
+          } else if (value._type === 'image') {
+            jsonLd[prop] = getImgUrl(value?.asset?._ref);
+          } else {
+            jsonLd[prop] = value.id
+              ? { '@id': value.id, '@type': value.type, ...value }
+              : {
+                  '@type': value.type,
+                  ...value
+                };
+          }
         } else if (Array.isArray(value) && typeof value[0] !== 'string') {
           jsonLd[prop] = value.map((item, index) => {
+            if (item._type === 'image') {
+              return getImgUrl(item.asset._ref);
+            }
             if (item.type === 'ListItem') {
               return item.id
                 ? { '@id': item.id, position: index + 1, '@type': item.type, ...item }
@@ -54,6 +70,7 @@ function createDynamicJsonLd(schemaObj: Schema) {
       }
     }
   }
+  console.log(jsonLd);
   return matchAndRemoveKeys(jsonLd, pattern);
 }
 

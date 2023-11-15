@@ -26,7 +26,7 @@ const ListSelection = ({ list, onChange, value }: Props) => {
   const removeSpace = (text: string) => text.replace(/\s/g, '');
   return (
     <Stack>
-      <Select fontSize={2} padding={2} space={2} onChange={handleChange} defaultValue={value}>
+      <Select fontSize={2} padding={3} space={2} onChange={handleChange} defaultValue={value}>
         {list.map(item => {
           if (typeof item === 'string') {
             return (

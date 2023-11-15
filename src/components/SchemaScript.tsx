@@ -10,10 +10,12 @@ type Schema = {
 
 type Props = {
   schema: Schema[];
+  projectId: string;
+  dataset: string;
 };
 
-const SchemaScript = memo(({ schema }: Props) => {
-  const seoMarkup = schema.map(schemaType => createDynamicJsonLd(schemaType));
+const SchemaScript = memo(({ schema, projectId, dataset }: Props) => {
+  const seoMarkup = schema.map(schemaType => createDynamicJsonLd(schemaType, projectId, dataset));
 
   return (
     <Head>
