@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { MdBusiness } from 'react-icons/md';
 import LocalBusinessListSelect from './LocalBusinessListSelect';
 import openingHoursSpecification from './openingHoursSpecification';
 import id from '../../common/id';
@@ -124,7 +125,20 @@ const localBusiness = defineType({
       of: [{ type: 'string' }]
     }),
     id
-  ]
+  ],
+  preview: {
+    select: {
+      name: 'name'
+    },
+    prepare(selection) {
+      const { name } = selection;
+      return {
+        title: name || 'Untitled',
+        subtitle: 'LocalBusiness',
+        media: MdBusiness
+      };
+    }
+  }
 });
 
 export default localBusiness;

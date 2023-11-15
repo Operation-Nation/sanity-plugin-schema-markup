@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { MdOutlineLan } from 'react-icons/md';
 import contactPoint from './contactPoint';
 import OrganizationListSelect from './OrganizationListSelect';
 import id from '../../common/id';
@@ -46,7 +47,20 @@ const organization = defineType({
       of: [{ type: 'string' }]
     }),
     id
-  ]
+  ],
+  preview: {
+    select: {
+      name: 'name'
+    },
+    prepare(selection) {
+      const { name } = selection;
+      return {
+        title: name || 'Untitled',
+        subtitle: 'Organization',
+        media: MdOutlineLan
+      };
+    }
+  }
 });
 
 export default organization;

@@ -70,7 +70,6 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
       }
     }
   }
-  console.log(jsonLd);
   return matchAndRemoveKeys(jsonLd, pattern);
 }
 

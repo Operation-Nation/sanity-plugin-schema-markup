@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { MdOutlineArticle } from 'react-icons/md';
 import ArticleListSelect from './ArticleListSelect';
 import id from '../../common/id';
 
@@ -114,7 +115,20 @@ const article = defineType({
       }
     }),
     id
-  ]
+  ],
+  preview: {
+    select: {
+      headline: 'headline'
+    },
+    prepare(selection) {
+      const { headline } = selection;
+      return {
+        title: headline || 'Untitled',
+        subtitle: 'Article',
+        media: MdOutlineArticle
+      };
+    }
+  }
 });
 
 export default article;
