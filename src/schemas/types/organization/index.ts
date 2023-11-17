@@ -3,6 +3,10 @@ import { MdOutlineLan } from 'react-icons/md';
 import contactPoint from './contactPoint';
 import OrganizationListSelect from './OrganizationListSelect';
 import id from '../../common/id';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import Domain from '../../../components/GlobalSetting/Domain';
+import Logo from '../../../components/GlobalSetting/Logo';
+import SocialLinks from '../../../components/GlobalSetting/SocialLinks';
 
 const organization = defineType({
   name: 'organization',
@@ -21,7 +25,10 @@ const organization = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: CompanyName
+      }
     }),
     defineField({
       name: 'alternateName',
@@ -31,12 +38,18 @@ const organization = defineType({
     defineField({
       name: 'url',
       title: 'Url',
-      type: 'url'
+      type: 'url',
+      components: {
+        input: Domain
+      }
     }),
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'image'
+      type: 'image',
+      components: {
+        input: Logo
+      }
     }),
     contactPoint,
     defineField({
@@ -44,7 +57,10 @@ const organization = defineType({
       title: 'Social Profiles',
       description: 'Add social profile url on each field',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [{ type: 'string' }],
+      components: {
+        input: SocialLinks
+      }
     }),
     id
   ],

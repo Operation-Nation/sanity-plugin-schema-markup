@@ -3,6 +3,11 @@ import { MdBusiness } from 'react-icons/md';
 import LocalBusinessListSelect from './LocalBusinessListSelect';
 import openingHoursSpecification from './openingHoursSpecification';
 import id from '../../common/id';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import Domain from '../../../components/GlobalSetting/Domain';
+import Logo from '../../../components/GlobalSetting/Logo';
+import Phone from '../../../components/GlobalSetting/Phone';
+import SocialLinks from '../../../components/GlobalSetting/SocialLinks';
 
 const localBusiness = defineType({
   name: 'localBusiness',
@@ -21,17 +26,26 @@ const localBusiness = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: CompanyName
+      }
     }),
     defineField({
       name: 'url',
       title: 'Url',
-      type: 'url'
+      type: 'url',
+      components: {
+        input: Domain
+      }
     }),
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'image'
+      type: 'image',
+      components: {
+        input: Logo
+      }
     }),
     defineField({
       name: 'image',
@@ -46,7 +60,10 @@ const localBusiness = defineType({
     defineField({
       name: 'telephone',
       title: 'Telephone',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: Phone
+      }
     }),
     defineField({
       name: 'address',
@@ -122,7 +139,10 @@ const localBusiness = defineType({
       title: 'Social Profiles',
       description: 'Add social profile url on each field',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [{ type: 'string' }],
+      components: {
+        input: SocialLinks
+      }
     }),
     id
   ],

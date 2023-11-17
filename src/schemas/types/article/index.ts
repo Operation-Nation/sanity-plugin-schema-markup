@@ -2,6 +2,15 @@ import { defineType, defineField } from 'sanity';
 import { MdOutlineArticle } from 'react-icons/md';
 import ArticleListSelect from './ArticleListSelect';
 import id from '../../common/id';
+import Headline from '../../../components/Article/Headline';
+import Description from '../../../components/Article/Description';
+import AuthorName from '../../../components/Article/AuthorName';
+import AuthorUrl from '../../../components/Article/AuthorUrl';
+import DatePublished from '../../../components/Article/DatePublished';
+import DateModified from '../../../components/Article/DateModified';
+import Images from '../../../components/Article/Images';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import Logo from '../../../components/GlobalSetting/Logo';
 
 const article = defineType({
   name: 'article',
@@ -20,18 +29,27 @@ const article = defineType({
     defineField({
       name: 'headline',
       title: 'Headline',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: Headline
+      }
     }),
     defineField({
       name: 'description',
       title: 'Short Description of the Article',
-      type: 'text'
+      type: 'text',
+      components: {
+        input: Description
+      }
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'array',
-      of: [{ type: 'image' }]
+      of: [{ type: 'image' }],
+      components: {
+        input: Images
+      }
     }),
     defineField({
       name: 'author',
@@ -60,12 +78,18 @@ const article = defineType({
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string'
+          type: 'string',
+          components: {
+            input: AuthorName
+          }
         }),
         defineField({
           name: 'url',
           title: 'Url',
-          type: 'url'
+          type: 'url',
+          components: {
+            input: AuthorUrl
+          }
         })
       ]
     }),
@@ -85,12 +109,18 @@ const article = defineType({
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string'
+          type: 'string',
+          components: {
+            input: CompanyName
+          }
         }),
         defineField({
           name: 'logo',
           title: 'Logo',
-          type: 'image'
+          type: 'image',
+          components: {
+            input: Logo
+          }
         })
       ]
     }),
@@ -98,6 +128,9 @@ const article = defineType({
       name: 'datePublished',
       title: 'Date Published',
       type: 'datetime',
+      components: {
+        input: DatePublished
+      },
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
@@ -112,6 +145,9 @@ const article = defineType({
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
         timeStep: 15
+      },
+      components: {
+        input: DateModified
       }
     }),
     id
