@@ -13,6 +13,7 @@ const localBusiness = defineType({
   name: 'localBusiness',
   type: 'object',
   title: 'Local Business',
+  icon: MdBusiness,
   fields: [
     defineField({
       name: 'type',

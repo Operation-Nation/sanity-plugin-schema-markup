@@ -1,9 +1,9 @@
 const localBusiness = {
   '@type': 'string',
+  '@id': 'string',
   name: 'string',
   logo: 'string',
   image: 'string',
-  '@id': 'string',
   url: 'string',
   telephone: 'string',
   priceRange: 'string',

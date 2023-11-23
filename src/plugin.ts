@@ -1,5 +1,5 @@
-import types from './schemas/types';
 import { definePlugin } from 'sanity';
+import types from './schemas/types';
 
 const schemaMarkup = definePlugin(() => {
   return {

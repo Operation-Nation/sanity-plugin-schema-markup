@@ -1,6 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineArticle } from 'react-icons/md';
-import ArticleListSelect from './ArticleListSelect';
+import { MdOutlineShare } from 'react-icons/md';
 import id from '../../common/id';
 import Headline from '../../../components/Article/Headline';
 import Description from '../../../components/Article/Description';
@@ -8,24 +7,22 @@ import AuthorName from '../../../components/Article/AuthorName';
 import AuthorUrl from '../../../components/Article/AuthorUrl';
 import DatePublished from '../../../components/Article/DatePublished';
 import DateModified from '../../../components/Article/DateModified';
-import Images from '../../../components/Article/Images';
+import HeroImage from '../../../components/Article/HeroImage';
 import CompanyName from '../../../components/GlobalSetting/CompanyName';
 import Logo from '../../../components/GlobalSetting/Logo';
+import sharedContent from './sharedContent';
 
-const article = defineType({
-  name: 'article',
+const socialMediaPosting = defineType({
+  name: 'socialMediaPosting',
   type: 'object',
-  title: 'Article',
-  icon: MdOutlineArticle,
+  title: 'Social Media Posting',
+  icon: MdOutlineShare,
   fields: [
     defineField({
       name: 'type',
       title: 'Type',
       type: 'string',
-      components: {
-        input: ArticleListSelect
-      },
-      initialValue: 'Article'
+      initialValue: 'SocialMediaPosting'
     }),
     defineField({
       name: 'headline',
@@ -46,10 +43,9 @@ const article = defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'array',
-      of: [{ type: 'image' }],
+      type: 'image',
       components: {
-        input: Images
+        input: HeroImage
       }
     }),
     defineField({
@@ -151,6 +147,7 @@ const article = defineType({
         input: DateModified
       }
     }),
+    sharedContent,
     id
   ],
   preview: {
@@ -161,11 +158,11 @@ const article = defineType({
       const { headline } = selection;
       return {
         title: headline || 'Untitled',
-        subtitle: 'Article',
-        media: MdOutlineArticle
+        subtitle: 'Social Media Posting',
+        media: MdOutlineShare
       };
     }
   }
 });
 
-export default article;
+export default socialMediaPosting;

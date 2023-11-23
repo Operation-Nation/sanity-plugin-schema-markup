@@ -1,11 +1,13 @@
 import { defineType, defineField } from 'sanity';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import itemListElement from './itemListElement';
+import id from '../../common/id';
 
 const breadcrumbList = defineType({
   name: 'breadcrumbList',
   type: 'object',
   title: 'Breadcrumb List',
+  icon: MdKeyboardDoubleArrowRight,
   fields: [
     defineField({
       name: 'type',
@@ -14,11 +16,7 @@ const breadcrumbList = defineType({
       hidden: true,
       initialValue: 'BreadcrumbList'
     }),
-    defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'string'
-    }),
+    id,
     itemListElement
   ],
   preview: {

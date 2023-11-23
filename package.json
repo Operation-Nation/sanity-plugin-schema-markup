@@ -35,14 +35,20 @@
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepublishOnly": "run-s build",
-    "watch": "pkg-utils watch --strict"
+    "watch": "pkg-utils watch --strict",
+    "test": "jest"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@sanity/icons": "^2.7.0",
     "@sanity/incompatible-plugin": "^1.0.4",
     "@sanity/ui": "^1.8.2",
     "@sanity/util": "^3.20.0",
     "@syncfusion/ej2-react-calendars": "^23.1.41",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "framer-motion": "^10.16.5",
     "next": "^13.5.6",
     "react-icons": "^4.12.0",
     "react-schemaorg": "^2.0.0",
@@ -52,6 +58,7 @@
     "@sanity/eslint-config-studio": "^3.0.1",
     "@sanity/pkg-utils": "^3.0.0",
     "@sanity/plugin-kit": "^3.1.10",
+    "@types/jest": "^29.5.10",
     "@types/react": "^18.2.28",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
@@ -83,7 +90,8 @@
     "rimraf": "^5.0.5",
     "sanity": "^3.18.0",
     "styled-components": "^5.3.11",
-    "typescript": "^5.2.2"
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "react": "^18",

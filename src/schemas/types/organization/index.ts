@@ -12,6 +12,7 @@ const organization = defineType({
   name: 'organization',
   type: 'object',
   title: 'Organization',
+  icon: MdOutlineLan,
   fields: [
     defineField({
       name: 'type',
