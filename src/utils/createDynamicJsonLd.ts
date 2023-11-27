@@ -24,23 +24,24 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
     // eslint-disable-next-line no-prototype-builtins
     if (obj.hasOwnProperty(prop) && prop !== '_type') {
       const value = obj[prop];
+      const { type, id, ...rest } = value ?? {};
       if (value) {
         if (typeof value === 'object' && !Array.isArray(value)) {
-          if (value.type === 'SeekToAction') {
+          if (type === 'SeekToAction') {
             jsonLd[prop] = {
-              '@type': value.type,
+              '@type': type,
               target: `${value?.searchUrl}={seek_to_second_number}`,
               'startOffset-input': 'required name=seek_to_second_number',
-              ...value
+              ...rest
             };
-          } else if (value.type === 'SearchAction') {
+          } else if (type === 'SearchAction') {
             jsonLd[prop] = {
-              '@type': value.type,
+              '@type': type,
               target: `${value?.searchUrl}{search_term_string}${value?.optionalString}`,
               'query-input': 'required name=search_term_string',
-              ...value
+              ...rest
             };
-          } else if (value.type === 'AggregateRating') {
+          } else if (type === 'AggregateRating') {
             if (obj?.review && obj?.review?.length > 0) {
               const reviews = obj.review;
               const countRating = reviews.filter(item => item.reviewRating.ratingValue);
@@ -52,64 +53,73 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
                 ratingValue: String(getRatingValue),
                 reviewCount: String(countReview),
                 ratingCount: String(countRating.length),
-                '@type': value.type,
-                ...value
+                '@type': type,
+                ...rest
               };
             }
-          } else if (value.logo) {
-            const { logo, ...rest } = value;
+          } else if (value?.logo) {
+            const { logo, type, ...rest } = value;
             const imgUrl = getImgUrl(value?.logo?.asset?._ref);
-            const strLogo = JSON.stringify({ logo: imgUrl });
             jsonLd[prop] = {
-              strLogo,
+              '@type': type,
+              strLogo: imgUrl,
               ...rest
             };
-          } else if (value._type === 'image') {
+          } else if (value?._type === 'image') {
             jsonLd[prop] = getImgUrl(value?.asset?._ref);
-          } else if (value._type === 'mainImage') {
+          } else if (value?._type === 'mainImage') {
             jsonLd[prop] = getImgUrl(value?.asset?._ref);
           } else {
-            jsonLd[prop] = value.id
-              ? { '@id': value.id, '@type': value.type, ...value }
+            jsonLd[prop] = id
+              ? { '@id': id, '@type': type, ...rest }
               : {
-                  '@type': value.type,
-                  ...value
+                  '@type': type,
+                  ...rest
                 };
           }
         } else if (Array.isArray(value) && typeof value[0] !== 'string') {
           jsonLd[prop] = value.map((item, index) => {
-            if (item._type === 'productReviewType') {
+            const { id, type, _type, reviewRating, author, publisher, ...restItem } = item;
+            if (_type === 'productReviewType') {
               const agtRating = obj?.aggregateRating;
-              const { reviewRating, ...rest } = item;
               return {
+                '@type': item.type,
                 reviewRating: {
                   bestRating: agtRating.bestRating,
                   worstRating: agtRating.worstRating,
                   ...reviewRating
                 },
-                ...rest
+                author: {
+                  '@type': author.type,
+                  name: author.name
+                },
+                publisher: {
+                  '@type': publisher.type,
+                  name: publisher.name
+                },
+                ...restItem
               };
             }
-            if (item._type === 'image') {
-              return getImgUrl(item.asset._ref);
+            if (_type === 'image') {
+              return getImgUrl(restItem.asset._ref);
             }
-            if (item._type === 'mainImage') {
-              return getImgUrl(item.asset._ref);
+            if (_type === 'mainImage') {
+              return getImgUrl(restItem.asset._ref);
             }
-            if (item.type === 'ListItem') {
-              return item.id
-                ? { '@id': item.id, position: index + 1, '@type': item.type, ...item }
+            if (type === 'ListItem') {
+              return id
+                ? { '@id': id, position: index + 1, '@type': type, ...item }
                 : {
-                    '@type': item.type,
+                    '@type': type,
                     position: index + 1,
-                    ...item
+                    ...restItem
                   };
             }
-            return item.id
-              ? { '@id': item.id, '@type': item.type, ...item }
+            return id
+              ? { '@id': id, '@type': type, ...restItem }
               : {
-                  '@type': item.type,
-                  ...item
+                  '@type': type,
+                  ...restItem
                 };
           });
         } else {

@@ -8,14 +8,24 @@ function matchAndRemoveKeys(obj: NestedObj, pattern?: NestedObj) {
   // eslint-disable-next-line no-restricted-syntax
   for (const key in pattern) {
     if (key in obj) {
-      if (Array.isArray(obj[key]) && typeof obj[key][0] === 'string') {
-        matchedObj[key] = obj[key];
-      } else if (Array.isArray(obj[key]) && typeof obj[key][0] === 'object') {
-        matchedObj[key] = obj[key].map((item: NestedObj) =>
-          matchAndRemoveKeys(item, pattern[key][0])
-        );
+      const value = obj[key];
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        if (value.strLogo) {
+          const { strLogo, ...rest } = value;
+          const modifiedValue = {
+            logo: strLogo,
+            ...rest
+          };
+          matchedObj[key] = matchAndRemoveKeys(modifiedValue, pattern[key]);
+        } else {
+          matchedObj[key] = matchAndRemoveKeys(value, pattern[key]);
+        }
+      } else if (Array.isArray(value) && typeof value[0] === 'string') {
+        matchedObj[key] = value;
+      } else if (Array.isArray(value) && typeof value[0] === 'object') {
+        matchedObj[key] = value.map((item: NestedObj) => matchAndRemoveKeys(item, pattern[key][0]));
       } else {
-        matchedObj[key] = matchAndRemoveKeys(obj[key], pattern[key]);
+        matchedObj[key] = matchAndRemoveKeys(value, pattern[key]);
       }
     }
   }

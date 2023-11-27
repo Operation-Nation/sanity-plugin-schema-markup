@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box, Button, Dialog } from '@sanity/ui';
+import { Box, Button, Dialog, Grid, Flex, Text, Stack } from '@sanity/ui';
 import { AddIcon } from '@sanity/icons';
-import { Grid, Icon, Stack, Text } from '@chakra-ui/react';
 import { ArrayInputFunctionsProps, ArraySchemaType } from 'sanity';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, ComponentType } from 'react';
+import { IconType } from 'react-icons';
 
 function ArrayFunctions(
   props: ArrayInputFunctionsProps<string | number | boolean, ArraySchemaType>
@@ -20,7 +20,7 @@ function ArrayFunctions(
   };
 
   return (
-    <Stack spacing={4}>
+    <Stack space={4}>
       <Button icon={AddIcon} text="Add Schema Type" mode="ghost" onClick={onOpen} />
       {open && (
         <Dialog
@@ -31,26 +31,15 @@ function ArrayFunctions(
           width={1}
         >
           <Box padding={4}>
-            <Grid
-              templateColumns={{
-                base: 'repeat(2, 1fr)',
-                md: 'repeat(3, 1fr)'
-              }}
-              gap={3}
-            >
+            <Grid columns={[2, 3]} gap={3}>
               {items.map(item => {
+                const Icon = item.icon as IconType;
                 return (
                   <Button key={item.name} mode="ghost" onClick={() => handleClick(item)}>
-                    <Stack
-                      padding={2}
-                      spacing={2}
-                      align="center"
-                      justify="center"
-                      textAlign="center"
-                    >
-                      <Icon as={item.icon} boxSize={6} />
-                      <Text fontSize="sm">{item.title}</Text>
-                    </Stack>
+                    <Flex padding={2} gap={2} align="center" justify="center">
+                      {item?.icon && <Icon fontSize="24px" />}
+                      <Text size={1}>{item.title}</Text>
+                    </Flex>
                   </Button>
                 );
               })}
@@ -65,5 +54,5 @@ function ArrayFunctions(
 export default function PageBuilderDropdown(props: any) {
   const { renderDefault } = props;
 
-  return <Stack spacing={3}>{renderDefault({ ...props, arrayFunctions: ArrayFunctions })}</Stack>;
+  return <Stack space={3}>{renderDefault({ ...props, arrayFunctions: ArrayFunctions })}</Stack>;
 }
