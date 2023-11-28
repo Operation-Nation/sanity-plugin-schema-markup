@@ -1,4 +1,4 @@
-const article = {
+const socialMediaPosting = {
   '@type': 'string',
   '@id': 'string',
   potentialAction: 'string',
@@ -28,4 +28,4 @@ const article = {
   ]
 };
 
-export default article;
+export default socialMediaPosting;

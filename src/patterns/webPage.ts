@@ -1,5 +1,5 @@
 const webPage = {
-  '@type': 'WebPage',
+  '@type': 'string',
   '@id': 'string',
   name: 'string',
   description: 'string',
