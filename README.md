@@ -1,7 +1,4 @@
-
 # @operationnation/sanity-plugin-schema-markup
-
-  
 
 > This is a **Sanity Studio v3** plugin.
 
@@ -29,39 +26,33 @@ npm install @operationnation/sanity-plugin-schema-markup
 
 ```
 
-  
-
 ## Usage
-
-  
 
 Add it as a plugin in `sanity.config.ts` (or .js):
 
 ```ts
+import { defineConfig } from 'sanity';
+import { schemaMarkup } from '@operationnation/sanity-plugin-schema-markup';
 
-import  {defineConfig}  from  'sanity'
-import  { schemaMarkup }  from  '@operationnation/sanity-plugin-schema-markup';
-
-export  default defineConfig({
-	plugins:  [schemaMarkup()],
-})
-
+export default defineConfig({
+  plugins: [schemaMarkup()]
+});
 ```
+
 Then, declare a field in your schema to be `schemaMarkup`
- 
 
 ```javascript
 const myDocument = {
-  type: "document",
-  name: "myDocument",
+  type: 'document',
+  name: 'myDocument',
   fields: [
     {
       title: 'Schema Markup',
-	  name: 'schemaMarkup',
-	  type: 'schemaMarkup',
+      name: 'schemaMarkup',
+      type: 'schemaMarkup'
     }
   ]
-}
+};
 ```
 
 ## Next.js implementation example
@@ -88,12 +79,12 @@ return (
 export  default  SchemaMarkup;
 ```
 
-
 ## Create schema markup script dynamically
-To create the schema markup script you need follow the schema type patterns: 
+
+To create the schema markup script you need follow the schema type patterns:
 [**Click here to see all schema patterns**](#all-schema-type-patterns)
 
-```javascript 
+```javascript
 import { createImgUrl } from '@operationnation/sanity-plugin-schema-markup';
 
 const  projectId  =  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -118,7 +109,7 @@ const SchemaMarkup = ({ data, setting })=> {
 			},
 		image: data.images.map(image=>getImgUrl(image.asset._ref))
 	};
-	
+
 	return (
 	<SchemaScript  schema={[ articleSchemaType ]}  projectId={projectId  as  string}  dataset={dataset  as string}  />
 	);
@@ -127,22 +118,22 @@ const SchemaMarkup = ({ data, setting })=> {
 
 ## All schema type patterns
 
-
 <details>
 
 <summary>Article</summary>
 
 ### Article Schema Markup Type
+
 ```javascript
- const article = {
+const article = {
   type: 'string',
   id: 'string',
-  publisher: { 
-	  name: 'string', 
-	  logo: 'string', 
-	  type: 'string', 
-	  id: 'string' 
-	},
+  publisher: {
+    name: 'string',
+    logo: 'string',
+    type: 'string',
+    id: 'string'
+  },
   headline: 'string',
   datePublished: 'string',
   image: ['string', 'string'],
@@ -151,7 +142,7 @@ const SchemaMarkup = ({ data, setting })=> {
     url: 'string',
     type: 'string',
     id: 'string'
-	},
+  },
   description: 'string',
   dateModified: 'string'
 };
@@ -164,8 +155,9 @@ const SchemaMarkup = ({ data, setting })=> {
 <summary>BreadcrumbList</summary>
 
 ### BreadcrumbList Schema Markup Type
+
 ```javascript
- const breadcrumb = {
+const breadcrumb = {
   type: 'BreadcrumbList',
   id: 'string',
   itemListElement: [
@@ -194,8 +186,9 @@ const SchemaMarkup = ({ data, setting })=> {
 <summary>FAQPage</summary>
 
 ### FAQPage Schema Markup Type
+
 ```javascript
- const faqPage = {
+const faqPage = {
   type: 'FAQPage',
   id: 'string',
   mainEntity: [
@@ -226,8 +219,9 @@ const SchemaMarkup = ({ data, setting })=> {
 <summary>HowTo</summary>
 
 ### HowTo Schema Markup Type
+
 ```javascript
- const howTo = {
+const howTo = {
   type: 'HowTo',
   id: 'string',
   name: 'string',
@@ -270,6 +264,7 @@ const SchemaMarkup = ({ data, setting })=> {
 <summary>ImageObject</summary>
 
 ### ImageObject Schema Markup Type
+
 ```javascript
 const imageObject = {
   type: 'ImageObject',
@@ -291,6 +286,7 @@ const imageObject = {
 <summary>LocalBusiness</summary>
 
 ### LocalBusiness Schema Markup Type
+
 ```javascript
 const localBusiness = {
   type: 'string',
@@ -334,6 +330,7 @@ const localBusiness = {
 <summary>Organization</summary>
 
 ### Organization Schema Markup Type
+
 ```javascript
 const organization = {
   type: 'string',
@@ -364,6 +361,7 @@ const organization = {
 <summary>Person</summary>
 
 ### Person Schema Markup Type
+
 ```javascript
 const person = {
   type: 'string',
@@ -402,6 +400,7 @@ const person = {
 <summary>Product</summary>
 
 ### Product Schema Markup Type
+
 ```javascript
 const product = {
   type: 'Product',
@@ -461,6 +460,7 @@ const product = {
 <summary>Recipe</summary>
 
 ### Recipe Schema Markup Type
+
 ```javascript
 const recipe = {
   type: 'Recipe',
@@ -539,6 +539,7 @@ const recipe = {
 <summary>Review</summary>
 
 ### Review Schema Markup Type
+
 ```javascript
 const review = {
   type: 'Review',
@@ -571,6 +572,7 @@ const review = {
 <summary>Service</summary>
 
 ### Service Schema Markup Type
+
 ```javascript
 const service = {
   type: 'Service',
@@ -620,6 +622,7 @@ const service = {
 <summary>SocialMediaPosting</summary>
 
 ### SocialMediaPosting Schema Markup Type
+
 ```javascript
 const socialMediaPosting = {
   type: 'string',
@@ -659,6 +662,7 @@ const socialMediaPosting = {
 <summary>VideoObject</summary>
 
 ### VideoObject Schema Markup Type
+
 ```javascript
 const videoObject = {
   type: 'VideoObject',
@@ -690,6 +694,7 @@ const videoObject = {
 <summary>WebPage</summary>
 
 ### WebPage Schema Markup Type
+
 ```javascript
 const webPage = {
   type: 'string',
@@ -713,6 +718,7 @@ const webPage = {
 <summary>WebSite</summary>
 
 ### WebSite Schema Markup Type
+
 ```javascript
 const website = {
   type: 'WebSite',
@@ -730,6 +736,7 @@ const website = {
 </details>
 
 ## License
+
 MIT-licensed. See LICENSE.
 
 ## Develop & test
@@ -738,7 +745,6 @@ This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
 
 with default configuration for build & watch scripts.
 
- See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
 
 on how to run this plugin with hotreload in the studio.
-
