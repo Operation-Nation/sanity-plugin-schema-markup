@@ -10,9 +10,14 @@ type ImageType = {
   };
 };
 
+type HeroProps = {
+  _type?: string;
+  _ref?: string;
+};
+
 const HeroImage = (props: ObjectInputProps) => {
   const { renderDefault, onChange, value } = props;
-  const hero = useFormValue(['hero']);
+  const hero = useFormValue(['hero']) as HeroProps;
   const [heroImage, setHeroImage] = useState<ImageType | undefined>(undefined);
   const client = useClient({ apiVersion: '2021-06-07' });
   useEffect(() => {

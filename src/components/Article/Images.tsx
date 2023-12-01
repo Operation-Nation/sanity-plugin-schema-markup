@@ -17,9 +17,9 @@ const Images = (props: ArrayOfObjectsInputProps) => {
   const body = useFormValue(['body']) as ImageType[];
   useEffect(() => {
     const bodyImages = body?.length > 0 ? body?.filter(item => item._type === 'mainImage') : [];
-    const images = bodyImages?.length > 0 ? [heroImage, ...bodyImages].filter(item => !!item) : [];
-    if (images?.length > 0 && !value?.length > 0) {
-      const createImageRefs = images.map(img => ({
+    const images = [heroImage, ...bodyImages].filter(item => !!item) as ImageType[];
+    if (images?.length > 0 && !value) {
+      const createImageRefs = images.map((img: ImageType) => ({
         _type: 'image',
         _key: randomKey(12),
         asset: {

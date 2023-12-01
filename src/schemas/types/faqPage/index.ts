@@ -64,7 +64,7 @@ const faqPage = defineType({
   ],
   preview: {
     select: {
-      name: 'mainEntity'
+      mainEntity: 'mainEntity'
     },
     prepare(selection) {
       const { mainEntity } = selection;

@@ -1,8 +1,8 @@
-import { ObjectInputProps, useClient, set } from 'sanity';
+import { StringInputProps, useClient, set } from 'sanity';
 import { useEffect } from 'react';
 import { Stack } from '@sanity/ui';
 
-const Phone = (props: ObjectInputProps) => {
+const Phone = (props: StringInputProps) => {
   const { onChange, value, renderDefault } = props;
   const client = useClient({ apiVersion: '2021-06-07' });
   useEffect(() => {
