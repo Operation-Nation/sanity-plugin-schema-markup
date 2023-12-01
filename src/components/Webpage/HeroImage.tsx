@@ -2,10 +2,18 @@ import { ObjectInputProps, useFormValue, set, useClient } from 'sanity';
 import { Stack } from '@sanity/ui';
 import { useState, useEffect } from 'react';
 
+type ImageType = {
+  _type?: string;
+  asset?: {
+    _ref?: string;
+    _type?: string;
+  };
+};
+
 const HeroImage = (props: ObjectInputProps) => {
   const { renderDefault, onChange, value } = props;
   const hero = useFormValue(['hero']);
-  const [heroImage, setHeroImage] = useState();
+  const [heroImage, setHeroImage] = useState<ImageType | undefined>(undefined);
   const client = useClient({ apiVersion: '2021-06-07' });
   useEffect(() => {
     const fetchData = async (ref: string) => {
@@ -16,13 +24,13 @@ const HeroImage = (props: ObjectInputProps) => {
     if (hero?._ref) {
       fetchData(hero._ref);
     }
-  }, [hero?._ref, client]);
+  }, [hero, client]);
   useEffect(() => {
     if (heroImage && typeof heroImage === 'object' && !value) {
       const createImageRefs = {
         _type: 'image',
         asset: {
-          _ref: heroImage.asset._ref,
+          _ref: heroImage?.asset?._ref,
           _type: 'reference'
         }
       };
