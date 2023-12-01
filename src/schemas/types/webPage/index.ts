@@ -2,6 +2,10 @@ import { defineType, defineField } from 'sanity';
 import { MdOutlineWeb } from 'react-icons/md';
 import id from '../../common/id';
 import PageTypeListSelect from './PageTypeListSelect';
+import Description from '../../../components/Webpage/Description';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import HeroImage from '../../../components/Webpage/HeroImage';
+import Name from '../../../components/Webpage/Name';
 
 const webPage = defineType({
   name: 'webPageType',
@@ -21,17 +25,26 @@ const webPage = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: Name
+      }
     }),
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
+      components: {
+        input: Description
+      }
     }),
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image'
+      type: 'image',
+      components: {
+        input: HeroImage
+      }
     }),
     defineField({
       name: 'breadcrumb',
@@ -53,7 +66,10 @@ const webPage = defineType({
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string'
+          type: 'string',
+          components: {
+            input: CompanyName
+          }
         })
       ]
     }),

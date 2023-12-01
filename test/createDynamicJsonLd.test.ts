@@ -1,4 +1,5 @@
 import createDynamicJsonLd from '../src/utils/createDynamicJsonLd';
+
 const projectId = 'exampleProject';
 const dataset = 'exampleDataset';
 describe('createDynamicJsonLd', () => {

@@ -1,16 +1,16 @@
 import { StringInputProps, useFormValue } from 'sanity';
 import FormInput from '../FormInput';
 
-const Headline = (props: StringInputProps) => {
+const Description = (props: StringInputProps) => {
   const { onChange, value } = props;
-  const headline = useFormValue([`title`]);
+  const description = useFormValue(['seo', 'metaDescription']);
 
   return (
     <FormInput
       onChange={onChange}
       value={value}
-      formValue={typeof headline === 'string' ? headline : undefined}
+      formValue={typeof description === 'string' ? description : undefined}
     />
   );
 };
-export default Headline;
+export default Description;

@@ -24,24 +24,40 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
     // eslint-disable-next-line no-prototype-builtins
     if (obj.hasOwnProperty(prop) && prop !== '_type') {
       const value = obj[prop];
-      const { type, id, ...rest } = value ?? {};
+      const { id, ...rest } = value ?? {};
       if (value) {
         if (typeof value === 'object' && !Array.isArray(value)) {
-          if (type === 'SeekToAction') {
+          if (value?.type === 'OfferCatalog') {
             jsonLd[prop] = {
-              '@type': type,
+              '@type': value?.type,
+              name: value?.name,
+              itemListElement: value?.itemListElement?.map(item => ({
+                '@type': item?.type,
+                name: item?.name,
+                itemListElement: item?.itemListElement?.map(subitem => ({
+                  '@type': subitem?.type,
+                  itemOffered: {
+                    '@type': subitem?.itemOffered?.type,
+                    name: subitem?.itemOffered?.name
+                  }
+                }))
+              }))
+            };
+          } else if (value?.type === 'SeekToAction') {
+            jsonLd[prop] = {
+              '@type': value?.type,
               target: `${value?.searchUrl}={seek_to_second_number}`,
               'startOffset-input': 'required name=seek_to_second_number',
               ...rest
             };
-          } else if (type === 'SearchAction') {
+          } else if (value?.type === 'SearchAction') {
             jsonLd[prop] = {
-              '@type': type,
+              '@type': value?.type,
               target: `${value?.searchUrl}{search_term_string}${value?.optionalString}`,
               'query-input': 'required name=search_term_string',
               ...rest
             };
-          } else if (type === 'AggregateRating') {
+          } else if (value?.type === 'AggregateRating') {
             if (obj?.review && obj?.review?.length > 0) {
               const reviews = obj.review;
               const countRating = reviews.filter(item => item.reviewRating.ratingValue);
@@ -53,17 +69,17 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
                 ratingValue: String(getRatingValue),
                 reviewCount: String(countReview),
                 ratingCount: String(countRating.length),
-                '@type': type,
+                '@type': value?.type,
                 ...rest
               };
             }
           } else if (value?.logo) {
-            const { logo, type, ...rest } = value;
+            const { logo, ...restValue } = value;
             const imgUrl = getImgUrl(value?.logo?.asset?._ref);
             jsonLd[prop] = {
-              '@type': type,
+              '@type': value?.type,
               strLogo: imgUrl,
-              ...rest
+              ...restValue
             };
           } else if (value?._type === 'image') {
             jsonLd[prop] = getImgUrl(value?.asset?._ref);
@@ -71,19 +87,19 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
             jsonLd[prop] = getImgUrl(value?.asset?._ref);
           } else {
             jsonLd[prop] = id
-              ? { '@id': id, '@type': type, ...rest }
+              ? { '@id': id, '@type': value?.type, ...rest }
               : {
-                  '@type': type,
+                  '@type': value?.type,
                   ...rest
                 };
           }
         } else if (Array.isArray(value) && typeof value[0] !== 'string') {
           jsonLd[prop] = value.map((item, index) => {
-            const { id, type, _type, reviewRating, author, publisher, ...restItem } = item;
-            if (_type === 'productReviewType') {
+            const { type, reviewRating, author, publisher, ...restItem } = item;
+            if (item?._type === 'productReviewType') {
               const agtRating = obj?.aggregateRating;
               return {
-                '@type': item.type,
+                '@type': item?.type,
                 reviewRating: {
                   bestRating: agtRating.bestRating,
                   worstRating: agtRating.worstRating,
@@ -100,23 +116,26 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
                 ...restItem
               };
             }
-            if (_type === 'image') {
+            if (item?.image) {
+              return getImgUrl(item?.image?.asset?._ref);
+            }
+            if (item?._type === 'image') {
               return getImgUrl(restItem.asset._ref);
             }
-            if (_type === 'mainImage') {
+            if (item?._type === 'mainImage') {
               return getImgUrl(restItem.asset._ref);
             }
             if (type === 'ListItem') {
-              return id
-                ? { '@id': id, position: index + 1, '@type': type, ...item }
+              return item?.id
+                ? { '@id': item?.id, position: index + 1, '@type': type, ...item }
                 : {
                     '@type': type,
                     position: index + 1,
                     ...restItem
                   };
             }
-            return id
-              ? { '@id': id, '@type': type, ...restItem }
+            return item?.id
+              ? { '@id': item?.id, '@type': type, ...restItem }
               : {
                   '@type': type,
                   ...restItem

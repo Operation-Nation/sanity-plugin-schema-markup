@@ -1,6 +1,10 @@
 import { defineType, defineField } from 'sanity';
 import { MdLanguage } from 'react-icons/md';
 import id from '../../common/id';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import Domain from '../../../components/GlobalSetting/Domain';
+import Logo from '../../../components/GlobalSetting/Logo';
+import Description from '../../../components/Website/Description';
 
 const website = defineType({
   name: 'websiteType',
@@ -18,17 +22,26 @@ const website = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string'
+      type: 'string',
+      components: {
+        input: CompanyName
+      }
     }),
     defineField({
       name: 'url',
       title: 'Url',
-      type: 'url'
+      type: 'url',
+      components: {
+        input: Domain
+      }
     }),
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image'
+      type: 'image',
+      components: {
+        input: Logo
+      }
     }),
     defineField({
       name: 'potentialAction',
@@ -56,7 +69,10 @@ const website = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
+      components: {
+        input: Description
+      }
     }),
     id
   ],

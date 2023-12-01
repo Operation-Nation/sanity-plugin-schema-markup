@@ -1,6 +1,8 @@
 import { defineType, defineField } from 'sanity';
 import { MdVideoCameraBack } from 'react-icons/md';
 import id from '../../common/id';
+import CompanyName from '../../../components/GlobalSetting/CompanyName';
+import Logo from '../../../components/GlobalSetting/Logo';
 
 const videoObject = defineType({
   name: 'videoObjectType',
@@ -61,12 +63,18 @@ const videoObject = defineType({
         defineField({
           name: 'name',
           title: 'Name',
-          type: 'string'
+          type: 'string',
+          components: {
+            input: CompanyName
+          }
         }),
         defineField({
           name: 'logo',
           title: 'Logo',
-          type: 'image'
+          type: 'image',
+          components: {
+            input: Logo
+          }
         })
       ]
     }),
