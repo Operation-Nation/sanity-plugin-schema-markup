@@ -68,8 +68,8 @@ const article = defineType({
                 value: 'Person'
               },
               {
-                title: 'Organisation',
-                value: 'Organisation'
+                title: 'Organization',
+                value: 'Organization'
               }
             ]
           },
