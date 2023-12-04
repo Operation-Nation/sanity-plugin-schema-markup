@@ -4,7 +4,7 @@
 
 # What it is
 
-The `@operationnation/sanity-plugin-schema-markup` is a Sanity Studio v3 plugin designed to simplify the process of generating schema markup for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines.
+The `@operationnation/sanity-plugin-schema-markup` is a Sanity Studio plugin designed to simplify the process of generating Schema Markup, also known as structured data, for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines. You can read more about Schema Markup on the [official website](https://schema.org/).
 
 ## Key Features
 
@@ -14,19 +14,17 @@ The `@operationnation/sanity-plugin-schema-markup` is a Sanity Studio v3 plugin 
 
 - **Dynamic Schema Markup:** The plugin supports the dynamic creation of schema markup, enabling you to tailor the structured data based on your specific content and requirements.
 
-- **Next.js Integration:** A provided example demonstrates how to implement schema markup in a Next.js project, showcasing a practical use case.
+- **React Component:** Use the `<SchemaScript />` component in the FE to inject a [JSON-LD](https://json-ld.org/) script into the `<head>` of the document.
 
 ## Installation
 
 To get started, install the plugin using npm:
 
 ```sh
-
 npm install @operationnation/sanity-plugin-schema-markup
-
 ```
 
-## Usage
+## Usage in Sanity Studio
 
 Add it as a plugin in `sanity.config.ts` (or .js):
 
@@ -39,7 +37,8 @@ export default defineConfig({
 });
 ```
 
-Then, declare a field in your schema to be `schemaMarkup`
+You can then add the `schemaMarkup` field to any Sanity Document you want it to be in.
+
 
 ```javascript
 const myDocument = {
@@ -55,40 +54,42 @@ const myDocument = {
 };
 ```
 
-## Next.js implementation example
+## Usage on the front-end with React
+Create a shared `SchemaMarkup` component that can be used in any page in your React app.
 
 ```typescript
-import { SchemaScript } from  '@operationnation/sanity-plugin-schema-markup';
+import { SchemaScript } from '@operationnation/sanity-plugin-schema-markup';
 
-type  Schema  = {
-	[key: string]: string;
+type Schema = {
+  [key: string]: string;
 };
 
-type  Props  = {
-	schema: Schema[];
-};
-const  projectId  =  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const  dataset  =  process.env.NEXT_PUBLIC_SANITY_DATASET;
-
-const  SchemaMarkup  = ({ schema }: Props) => {
-return (
-	<SchemaScript  schema={schema}  projectId={projectId  as  string}  dataset={dataset  as string}  />
-	);
+type Props = {
+  schema: Schema[];
 };
 
-export  default  SchemaMarkup;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+const SchemaMarkup = ({ schema }: Props) => {
+  return (
+	  <SchemaScript schema={schema} projectId={projectId as string} dataset={dataset as string} />
+  );
+};
+
+export default SchemaMarkup;
 ```
 
 ## Create schema markup script dynamically
 
-To create the schema markup script you need follow the schema type patterns:
+To create the schema markup script you need to follow the schema type patterns:
 [**Click here to see all schema patterns**](#all-schema-type-patterns)
 
 ```javascript
 import { createImgUrl } from '@operationnation/sanity-plugin-schema-markup';
 
-const  projectId  =  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const  dataset  =  process.env.NEXT_PUBLIC_SANITY_DATASET;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const SchemaMarkup = ({ data, setting })=> {
 	const { getImgUrl } = createImgUrl( projectId, dataset );
 	const  articleSchemaType = {
@@ -111,7 +112,7 @@ const SchemaMarkup = ({ data, setting })=> {
 	};
 
 	return (
-	<SchemaScript  schema={[ articleSchemaType ]}  projectId={projectId  as  string}  dataset={dataset  as string}  />
+	  <SchemaScript schema={[articleSchemaType]} projectId={projectId as string} dataset={dataset as string}  />
 	);
 }
 ```
@@ -735,9 +736,13 @@ const website = {
 
 </details>
 
+## Contributing
+
+We have taken the liberty of adding the most commonly used Schema Markup types from the spec. If there are some missing you wish to be added, feel free to create a PR. Contributions are welcome.
+
 ## License
 
-MIT-licensed. See LICENSE.
+Copyright ©2023 Operation Nation LLC. [See LICENSE](https://github.com/Operation-Nation/sanity-plugin-schema-markup/blob/main/LICENSE).
 
 ## Develop & test
 
