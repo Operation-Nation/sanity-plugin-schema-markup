@@ -64,8 +64,8 @@ const socialMediaPosting = defineType({
                 value: 'Person'
               },
               {
-                title: 'Organisation',
-                value: 'Organisation'
+                title: 'Organization',
+                value: 'Organization'
               }
             ]
           },
