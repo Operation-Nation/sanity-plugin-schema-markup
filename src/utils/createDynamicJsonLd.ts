@@ -2,8 +2,7 @@
 import detectSchemaType from './detectSchemaType';
 import matchAndRemoveKeys from './matchAndRemoveKeys';
 import createImgUrl from './createImgUrl';
-
-type Schema = Record<string, any>;
+import { Schema } from '../types/Types';
 
 type JsonLdObject = {
   [key: string]: any;

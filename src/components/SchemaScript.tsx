@@ -3,10 +3,7 @@ import { helmetJsonLdProp } from 'react-schemaorg';
 import { Helmet } from 'react-helmet';
 import { Graph } from 'schema-dts';
 import createDynamicJsonLd from '../utils/createDynamicJsonLd';
-
-type Schema = {
-  [key: string]: string;
-};
+import { Schema } from '../types/Types';
 
 type Props = {
   schema: Schema[];

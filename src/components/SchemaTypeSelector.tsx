@@ -2,7 +2,7 @@
 import { Box, Button, Dialog, Grid, Flex, Text, Stack } from '@sanity/ui';
 import { AddIcon } from '@sanity/icons';
 import { ArrayInputFunctionsProps, ArraySchemaType } from 'sanity';
-import { useCallback, useState, ComponentType } from 'react';
+import { useCallback, useState } from 'react';
 import { IconType } from 'react-icons';
 
 function ArrayFunctions(
