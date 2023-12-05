@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { jsonLdScriptProps } from 'react-schemaorg';
-import Head from 'next/head';
+import { helmetJsonLdProp } from 'react-schemaorg';
+import { Helmet } from 'react-helmet';
 import { Graph } from 'schema-dts';
 import createDynamicJsonLd from '../utils/createDynamicJsonLd';
 
@@ -18,14 +18,14 @@ const SchemaScript = memo(({ schema, projectId, dataset }: Props) => {
   const seoMarkup = schema.map(schemaType => createDynamicJsonLd(schemaType, projectId, dataset));
 
   return (
-    <Head>
-      <script
-        {...jsonLdScriptProps({
+    <Helmet
+      script={[
+        helmetJsonLdProp({
           '@context': 'https://schema.org',
           '@graph': seoMarkup
-        } as unknown as Graph)}
-      />
-    </Head>
+        } as unknown as Graph)
+      ]}
+    />
   );
 });
 export default SchemaScript;
