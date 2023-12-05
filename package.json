@@ -1,6 +1,6 @@
 {
   "name": "@operationnation/sanity-plugin-schema-markup",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "description": "the plugin is designed to simplify the process of generating schema markup for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines.",
   "keywords": [
     "sanity",
