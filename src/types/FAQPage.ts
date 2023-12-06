@@ -1,7 +1,7 @@
 export type FAQPage = {
   type: string;
   id?: string;
-  mainEntity?: Arrya<{
+  mainEntity?: Array<{
     type?: string;
     name?: string;
     acceptedAnswer?: {

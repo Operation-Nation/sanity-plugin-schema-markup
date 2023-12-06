@@ -16,22 +16,13 @@ export type Service = {
     itemListElement?: Array<{
       type?: string;
       name?: string;
-      itemListElement?: Array<
-        {
+      itemListElement?: Array<{
+        type?: string;
+        itemOffered?: {
           type?: string;
-          itemOffered?: {
-            type?: string;
-            name?: string;
-          };
-        },
-        {
-          type?: string;
-          itemOffered?: {
-            type?: string;
-            name?: string;
-          };
-        }
-      >;
+          name?: string;
+        };
+      }>;
     }>;
   };
 };
