@@ -13,18 +13,17 @@ import { VideoObject } from './VideoObject';
 import { WebPage } from './WebPage';
 import { WebSite } from './WebSite';
 
-export type Schema =
-  | Article
-  | BreadcrumbList
-  | FAQPage
-  | HowTo
-  | ImageObject
-  | Organization
-  | Person
-  | Product
-  | Recipe
-  | Service
-  | SocialMediaPosting
-  | VideoObject
-  | WebPage
-  | WebSite;
+export type Schema = Article &
+  BreadcrumbList &
+  FAQPage &
+  HowTo &
+  ImageObject &
+  Organization &
+  Person &
+  Product &
+  Recipe &
+  Service &
+  SocialMediaPosting &
+  VideoObject &
+  WebPage &
+  WebSite;

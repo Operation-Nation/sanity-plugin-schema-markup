@@ -17,10 +17,7 @@ import videoObject from '../patterns/videoObject';
 import articleTypeList from '../schemas/types/article/list/articleTypeList';
 import organizationTypeList from '../schemas/types/organization/list/organizationTypeList';
 import localBusinessTypeList from '../schemas/types/localBusiness/list/localBusinessTypeList';
-
-type Props = {
-  [key: string]: string;
-};
+import { Schema } from '../types/Types';
 
 type List =
   | string
@@ -60,7 +57,7 @@ const findSchemaType = (typeList: List[], schemaType: string) => {
   return undefined;
 };
 
-const detectSchemaType = (schema: Props) => {
+const detectSchemaType = (schema: Schema) => {
   const { type } = schema;
   switch (type) {
     case findSchemaType(articleTypeList, type):
