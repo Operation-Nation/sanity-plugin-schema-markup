@@ -59,10 +59,7 @@ Create a shared `SchemaMarkup` component that can be used in any page in your Re
 
 ```typescript
 import { SchemaScript } from '@operationnation/sanity-plugin-schema-markup';
-
-type Schema = {
-  [key: string]: string;
-};
+import { Schema } from '../types/Types';
 
 type Props = {
   schema: Schema[];
@@ -248,7 +245,7 @@ const howTo = {
   ],
   step: [
     {
-      '@type': 'HowToStep',
+      type: 'HowToStep',
       text: 'string',
       image: 'url',
       name: 'string',
