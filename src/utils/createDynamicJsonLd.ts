@@ -2,8 +2,7 @@
 import detectSchemaType from './detectSchemaType';
 import matchAndRemoveKeys from './matchAndRemoveKeys';
 import createImgUrl from './createImgUrl';
-
-type Schema = Record<string, any>;
+import { Schema } from '../types/Types';
 
 type JsonLdObject = {
   [key: string]: any;
@@ -59,11 +58,11 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
             };
           } else if (value?.type === 'AggregateRating') {
             if (obj?.review && obj?.review?.length > 0) {
-              const reviews = obj.review;
-              const countRating = reviews.filter(item => item.reviewRating.ratingValue);
-              const countReview = reviews.length;
+              const reviews = obj?.review;
+              const countRating = reviews?.filter(item => item?.reviewRating?.ratingValue);
+              const countReview = reviews?.length;
               const getRatingValue =
-                reviews.reduce((r, c) => r + Number(c.reviewRating.ratingValue), 0) /
+                reviews.reduce((r, c) => r + Number(c?.reviewRating?.ratingValue), 0) /
                 reviews.length;
               jsonLd[prop] = {
                 ratingValue: String(getRatingValue),
@@ -101,8 +100,8 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
               return {
                 '@type': item?.type,
                 reviewRating: {
-                  bestRating: agtRating.bestRating,
-                  worstRating: agtRating.worstRating,
+                  bestRating: agtRating?.bestRating,
+                  worstRating: agtRating?.worstRating,
                   ...reviewRating
                 },
                 author: {
