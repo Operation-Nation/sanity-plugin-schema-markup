@@ -53,6 +53,10 @@ const myDocument = {
 };
 ```
 
+![Schema Markup Field](./src/images/add_schema_markup_button.png)
+
+![Schema Markup Modal](./src/images/schema_markup_modal.png)
+
 ## Usage on the front-end with React
 
 Create a shared `SchemaMarkup` component that can be used in any page in your React app.
