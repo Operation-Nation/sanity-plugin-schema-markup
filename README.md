@@ -39,7 +39,6 @@ export default defineConfig({
 
 You can then add the `schemaMarkup` field to any Sanity Document you want it to be in.
 
-
 ```javascript
 const myDocument = {
   type: 'document',
@@ -55,6 +54,7 @@ const myDocument = {
 ```
 
 ## Usage on the front-end with React
+
 Create a shared `SchemaMarkup` component that can be used in any page in your React app.
 
 ```typescript
@@ -77,9 +77,38 @@ const SchemaMarkup = ({ schema }: Props) => {
 export default SchemaMarkup;
 ```
 
-## Create schema markup script dynamically
+Then you can use the `SchemaMarkup` component where ever you are consuming the `schemaMarkup` data from your Sanity Groq or GraphQL query. So lets say we have a Post page where we conduct our Groq query and the `schemaMarkup` object is on a post object. We can simply pass `schemaMarkup` directly into the `<SchemaMarkup/>` component.
 
-To create the schema markup script you need to follow the schema type patterns:
+```
+const post = await getPost(client, params.slug)
+
+return (
+    <Container>
+      <section className="post">
+        {post.schemaMarkup && <SchemaMarkup schema={post.schemaMarkup}  />}
+        {post.mainImage ? (
+          <Image
+            className="post__cover"
+            src={urlForImage(post.mainImage).url()}
+            height={231}
+            width={367}
+            alt=""
+          />
+        ) : (
+          <div className="post__cover--none" />
+        )}
+        <div className="post__container">
+          <h1 className="post__title">{post.title}</h1>
+         ....
+    </Container>
+  )
+}
+```
+
+## Create schema markup script dynamically (optional)
+
+If your implementation requires any custom mapping or configuration, you can always create your schema markup how you see fit.
+When creating schema markup script, you need to follow the schema type patterns:
 [**Click here to see all schema patterns**](#all-schema-type-patterns)
 
 ```javascript
