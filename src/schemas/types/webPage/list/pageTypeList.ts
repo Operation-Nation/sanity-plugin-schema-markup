@@ -1,3 +1,3 @@
-const pageTypeList = ['Web Page', 'Contact Page', 'About Page'];
+const pageTypeList = ['WebPage', 'ContactPage', 'AboutPage'];
 
 export default pageTypeList;

@@ -83,7 +83,7 @@ export default SchemaMarkup;
 
 Then you can use the `SchemaMarkup` component where ever you are consuming the `schemaMarkup` data from your Sanity Groq or GraphQL query. So lets say we have a Post page where we conduct our Groq query and the `schemaMarkup` object is on a post object. We can simply pass `schemaMarkup` directly into the `<SchemaMarkup/>` component.
 
-```
+```js
 const post = await getPost(client, params.slug)
 
 return (
@@ -106,21 +106,24 @@ return (
          ....
     </Container>
   )
-}
 ```
 
 ## Create schema markup script dynamically (optional)
+
+> Note: It's important to note that this dynamic creation of the schema markup script is optional. If your implementation doesn't require any custom mapping or configuration, you can skip this section and use the default schema patterns provided by the library. However, if you need to customize the schema markup based on your specific needs, this dynamic approach allows you to do so.
+
+By creating the schema markup script dynamically, you have the flexibility to define the schema type, properties, and values based on your data and business logic. If your schema data constantly changing or you are trying to get the data from an api then you may need to create the schema script dynamically. By creating the schema markup script dynamically, you have the flexibility to define the schema type, properties, and values based on your data and business logic.
 
 If your implementation requires any custom mapping or configuration, you can always create your schema markup how you see fit.
 When creating schema markup script, you need to follow the schema type patterns:
 [**Click here to see all schema patterns**](#all-schema-type-patterns)
 
 ```javascript
-import { createImgUrl } from '@operationnation/sanity-plugin-schema-markup';
+import { SchemaScript, createImgUrl } from '@operationnation/sanity-plugin-schema-markup';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
-const SchemaMarkup = ({ data, setting })=> {
+const SchemaMarkup = ({ data })=> {
 	const { getImgUrl } = createImgUrl( projectId, dataset );
 	const  articleSchemaType = {
 		type: 'Article',
@@ -131,12 +134,12 @@ const SchemaMarkup = ({ data, setting })=> {
 		author: {
 			type: 'Person',
 			name: data.author.name,
-			url: setting.domain
+			url: data.domain
 			},
 		publisher: {
 			type: 'Organization',
-			name: setting.companyName,
-			logo: setting.logo
+			name: data.companyName,
+			logo: data.logo
 			},
 		image: data.images.map(image=>getImgUrl(image.asset._ref))
 	};
@@ -146,6 +149,10 @@ const SchemaMarkup = ({ data, setting })=> {
 	);
 }
 ```
+
+In the code snippet, the `SchemaMarkup` component is defined, which takes in `data` as props. Inside the component, a schema object of type `Article` is created dynamically based on the provided data.
+
+The `createImgUrl` function from the library is used to generate the image URLs for the `image` property of the schema object.
 
 ## All schema type patterns
 

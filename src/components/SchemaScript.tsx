@@ -13,7 +13,7 @@ type Props = {
 
 const SchemaScript = memo(({ schema, projectId, dataset }: Props) => {
   const seoMarkup = schema.map(schemaType => createDynamicJsonLd(schemaType, projectId, dataset));
-
+  if (seoMarkup.length === 0) return null;
   return (
     <Helmet
       script={[

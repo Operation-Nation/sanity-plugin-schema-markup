@@ -17,6 +17,7 @@ import videoObject from '../patterns/videoObject';
 import articleTypeList from '../schemas/types/article/list/articleTypeList';
 import organizationTypeList from '../schemas/types/organization/list/organizationTypeList';
 import localBusinessTypeList from '../schemas/types/localBusiness/list/localBusinessTypeList';
+import pageTypeList from '../schemas/types/webPage/list/pageTypeList';
 import { Schema } from '../types/Types';
 
 type List =
@@ -86,7 +87,7 @@ const detectSchemaType = (schema: Schema) => {
       return recipe;
     case 'HowTo':
       return howTo;
-    case 'WebPage':
+    case findSchemaType(pageTypeList, type):
       return webPage;
     case 'ImageObject':
       return imageObject;
