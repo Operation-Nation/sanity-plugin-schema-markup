@@ -83,7 +83,7 @@ export default SchemaMarkup;
 
 Then you can use the `SchemaMarkup` component where ever you are consuming the `schemaMarkup` data from your Sanity Groq or GraphQL query. So lets say we have a Post page where we conduct our Groq query and the `schemaMarkup` object is on a post object. We can simply pass `schemaMarkup` directly into the `<SchemaMarkup/>` component.
 
-```
+```js
 const post = await getPost(client, params.slug)
 
 return (
