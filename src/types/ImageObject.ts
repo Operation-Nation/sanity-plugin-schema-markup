@@ -9,7 +9,7 @@ export type ImageObject = {
   };
   contentLocation?: string;
   contentUrl?: string;
-  datePublished?: string;
+  datePublished?: Date;
   description?: string;
   name?: string;
   caption?: string;

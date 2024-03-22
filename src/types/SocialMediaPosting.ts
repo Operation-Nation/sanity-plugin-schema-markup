@@ -12,7 +12,7 @@ export type SocialMediaPosting = {
     id?: string;
   };
   headline?: string;
-  datePublished?: string;
+  datePublished?: Date;
   image?: Image;
   author?: {
     name?: string;
@@ -21,7 +21,7 @@ export type SocialMediaPosting = {
     id?: string;
   };
   description?: string;
-  dateModified?: string;
+  dateModified?: Date;
   sharedContent?: Array<{
     type?: string;
     headline?: string;

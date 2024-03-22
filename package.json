@@ -1,6 +1,6 @@
 {
   "name": "@operationnation/sanity-plugin-schema-markup",
-  "version": "1.0.2",
+  "version": "1.0.10",
   "description": "the plugin is designed to simplify the process of generating schema markup for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines.",
   "keywords": [
     "sanity",
@@ -20,9 +20,20 @@
     ".": {
       "types": "./dist/index.d.ts",
       "source": "./src/index.ts",
-      "require": "./dist/index.js",
       "import": "./dist/index.esm.js",
       "default": "./dist/index.esm.js"
+    },
+    "./NextSchemaScript": {
+      "types": "./dist/src/components/NextSchemaScript/index.d.ts",
+      "import": "./dist/src/components/NextSchemaScript/index.esm.js",
+      "source": "./src/components/NextSchemaScript/index.ts",
+      "default": "./dist/src/components/NextSchemaScript/index.esm.js"
+    },
+    "./SchemaScript": {
+      "types": "./dist/src/components/SchemaScript/index.d.ts",
+      "import": "./dist/src/components/SchemaScript/index.esm.js",
+      "source": "./src/components/SchemaScript/index.ts",
+      "default": "./dist/src/components/SchemaScript/index.esm.js"
     },
     "./package.json": "./package.json"
   },
