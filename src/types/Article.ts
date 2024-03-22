@@ -10,7 +10,7 @@ export type Article = {
     id?: string;
   };
   headline?: string;
-  datePublished?: string;
+  datePublished?: Date;
   image?: Image;
   author?: {
     name?: string;
@@ -19,5 +19,5 @@ export type Article = {
     id?: string;
   };
   description?: string;
-  dateModified?: string;
+  dateModified?: Date;
 };

@@ -16,6 +16,21 @@ const organization = {
       availableLanguage: ['string', 'string']
     }
   ],
+  department: [
+    {
+      '@type': 'string',
+      '@id': 'string',
+      name: 'string',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'string',
+        addressLocality: 'string',
+        addressRegion: 'string',
+        postalCode: 'string',
+        addressCountry: 'string'
+      }
+    }
+  ],
   sameAs: ['string', 'string']
 };
 

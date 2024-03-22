@@ -23,6 +23,10 @@ module.exports = {
     project: './tsconfig.json'
   },
   rules: {
+    'import/prefer-default-export': [
+      'off',
+      { target: 'any' } // default is "single"
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: true, optionalDependencies: true, peerDependencies: true }

@@ -43,7 +43,7 @@ export type Product = {
       bestRating?: string;
       worstRating?: string;
     };
-    datePublished?: string;
+    datePublished?: Date;
     author?: { type?: string; name?: string };
     publisher?: { type?: string; name?: string };
   }>;

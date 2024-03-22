@@ -1,7 +1,4 @@
-import schemaMarkup from './plugin';
-import SchemaScript from './components/SchemaScript';
-import createImgUrl from './utils/createImgUrl';
-
 export * from './types/Types';
 
-export { schemaMarkup, SchemaScript, createImgUrl };
+export { default as schemaMarkup } from './plugin';
+export { default as createImgUrl } from './utils/createImgUrl';

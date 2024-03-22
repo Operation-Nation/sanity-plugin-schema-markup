@@ -79,7 +79,7 @@ describe('createDynamicJsonLd', () => {
           type: 'Review',
           name: 'John Doe',
           reviewRating: { ratingValue: '4', bestRating: '5', worstRating: '1' },
-          datePublished: '2023-11-14',
+          datePublished: new Date('2023-11-15'),
           author: { type: 'Person', name: 'John Doe' },
           publisher: { type: 'Organization', name: 'Operation Nation' }
         },
@@ -88,7 +88,7 @@ describe('createDynamicJsonLd', () => {
           type: 'Review',
           name: 'Camelia Roy',
           reviewRating: { ratingValue: '2', bestRating: '5', worstRating: '1' },
-          datePublished: '2023-11-15',
+          datePublished: new Date('2023-11-15'),
           author: { type: 'Person', name: 'Camelia Roy' },
           publisher: { type: 'Organization', name: 'Operation Nation' }
         }

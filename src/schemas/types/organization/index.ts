@@ -7,6 +7,7 @@ import CompanyName from '../../../components/GlobalSetting/CompanyName';
 import Domain from '../../../components/GlobalSetting/Domain';
 import Logo from '../../../components/GlobalSetting/Logo';
 import SocialLinks from '../../../components/GlobalSetting/SocialLinks';
+import department from './department';
 
 const organization = defineType({
   name: 'organization',
@@ -53,6 +54,7 @@ const organization = defineType({
       }
     }),
     contactPoint,
+    department,
     defineField({
       name: 'sameAs',
       title: 'Social Profiles',
