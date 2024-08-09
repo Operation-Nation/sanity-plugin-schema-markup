@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineLan } from 'react-icons/md';
+import { Building } from 'lucide-react';
 import contactPoint from './contactPoint';
 import OrganizationListSelect from './OrganizationListSelect';
 import id from '../../common/id';
@@ -13,7 +13,7 @@ const organization = defineType({
   name: 'organization',
   type: 'object',
   title: 'Organization',
-  icon: MdOutlineLan,
+  icon: Building,
   fields: [
     defineField({
       name: 'type',
@@ -76,7 +76,7 @@ const organization = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Organization',
-        media: MdOutlineLan
+        media: Building
       };
     }
   }

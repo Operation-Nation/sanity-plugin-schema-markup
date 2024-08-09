@@ -23,18 +23,6 @@
       "import": "./dist/index.esm.js",
       "default": "./dist/index.esm.js"
     },
-    "./NextSchemaScript": {
-      "types": "./dist/src/components/NextSchemaScript/index.d.ts",
-      "import": "./dist/src/components/NextSchemaScript/index.esm.js",
-      "source": "./src/components/NextSchemaScript/index.ts",
-      "default": "./dist/src/components/NextSchemaScript/index.esm.js"
-    },
-    "./SchemaScript": {
-      "types": "./dist/src/components/SchemaScript/index.d.ts",
-      "import": "./dist/src/components/SchemaScript/index.esm.js",
-      "source": "./src/components/SchemaScript/index.ts",
-      "default": "./dist/src/components/SchemaScript/index.esm.js"
-    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
@@ -64,8 +52,8 @@
     "@sanity/util": "^3.20.0",
     "@syncfusion/ej2-react-calendars": "^23.1.41",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "lucide-react": "^0.424.0",
     "react-helmet": "^6.1.0",
-    "react-icons": "^4.12.0",
     "react-schemaorg": "^2.0.0",
     "schema-dts": "^1.1.2"
   },

@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineShare } from 'react-icons/md';
+import { Share2 } from 'lucide-react';
 import id from '../../common/id';
 import Headline from '../../../components/Article/Headline';
 import Description from '../../../components/Article/Description';
@@ -16,7 +16,7 @@ const socialMediaPosting = defineType({
   name: 'socialMediaPosting',
   type: 'object',
   title: 'Social Media Posting',
-  icon: MdOutlineShare,
+  icon: Share2,
   fields: [
     defineField({
       name: 'type',
@@ -159,7 +159,7 @@ const socialMediaPosting = defineType({
       return {
         title: headline || 'Untitled',
         subtitle: 'Social Media Posting',
-        media: MdOutlineShare
+        media: Share2
       };
     }
   }

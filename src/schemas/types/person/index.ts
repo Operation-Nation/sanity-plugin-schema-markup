@@ -1,12 +1,12 @@
 import { defineType, defineField } from 'sanity';
-import { MdPerson } from 'react-icons/md';
+import { User } from 'lucide-react';
 import id from '../../common/id';
 
 const person = defineType({
   name: 'personType',
   type: 'object',
   title: 'Person',
-  icon: MdPerson,
+  icon: User,
   fields: [
     defineField({
       name: 'type',
@@ -148,7 +148,7 @@ const person = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Person',
-        media: MdPerson
+        media: User
       };
     }
   }

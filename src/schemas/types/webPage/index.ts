@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineWeb } from 'react-icons/md';
+import { PanelTop } from 'lucide-react';
 import id from '../../common/id';
 import PageTypeListSelect from './PageTypeListSelect';
 import Description from '../../../components/Webpage/Description';
@@ -11,7 +11,7 @@ const webPage = defineType({
   name: 'webPageType',
   type: 'object',
   title: 'WebPage',
-  icon: MdOutlineWeb,
+  icon: PanelTop,
   fields: [
     defineField({
       name: 'type',
@@ -89,7 +89,7 @@ const webPage = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'WebPage',
-        media: MdOutlineWeb
+        media: PanelTop
       };
     }
   }

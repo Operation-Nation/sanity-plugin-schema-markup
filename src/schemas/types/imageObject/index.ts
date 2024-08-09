@@ -1,12 +1,12 @@
 import { defineType, defineField } from 'sanity';
-import { MdImage } from 'react-icons/md';
+import { Image } from 'lucide-react';
 import id from '../../common/id';
 
 const imageObject = defineType({
   name: 'imageObjectType',
   type: 'object',
   title: 'Image Object',
-  icon: MdImage,
+  icon: Image,
   fields: [
     defineField({
       name: 'type',
@@ -61,7 +61,7 @@ const imageObject = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'ImageObject',
-        media: MdImage
+        media: Image
       };
     }
   }

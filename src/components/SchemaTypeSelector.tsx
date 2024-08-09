@@ -3,7 +3,6 @@ import { Box, Button, Dialog, Grid, Flex, Text, Stack } from '@sanity/ui';
 import { AddIcon } from '@sanity/icons';
 import { ArrayInputFunctionsProps, ArraySchemaType } from 'sanity';
 import { useCallback, useState } from 'react';
-import { IconType } from 'react-icons';
 
 function ArrayFunctions(
   props: ArrayInputFunctionsProps<string | number | boolean, ArraySchemaType>
@@ -33,7 +32,7 @@ function ArrayFunctions(
           <Box padding={4}>
             <Grid columns={[2, 3]} gap={3}>
               {items.map(item => {
-                const Icon = item.icon as IconType;
+                const Icon = item.icon as any;
                 return (
                   <Button key={item.name} mode="ghost" onClick={() => handleClick(item)}>
                     <Flex padding={2} gap={2} align="center" justify="center">

@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdReviews } from 'react-icons/md';
+import { Star } from 'lucide-react';
 import id from '../../common/id';
 import ItemReviewedListSelect from './ItemReviewedListSelect';
 
@@ -7,7 +7,7 @@ const review = defineType({
   name: 'reviewType',
   type: 'object',
   title: 'Review',
-  icon: MdReviews,
+  icon: Star,
   fields: [
     defineField({
       name: 'type',
@@ -118,7 +118,7 @@ const review = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Review',
-        media: MdReviews
+        media: Star
       };
     }
   }
