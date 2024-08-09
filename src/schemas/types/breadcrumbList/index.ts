@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import { ListTree } from 'lucide-react';
 import itemListElement from './itemListElement';
 import id from '../../common/id';
 
@@ -7,7 +7,7 @@ const breadcrumbList = defineType({
   name: 'breadcrumbList',
   type: 'object',
   title: 'Breadcrumb List',
-  icon: MdKeyboardDoubleArrowRight,
+  icon: ListTree,
   fields: [
     defineField({
       name: 'type',
@@ -29,7 +29,7 @@ const breadcrumbList = defineType({
       return {
         title: mapListItems || 'No ListItem',
         subtitle: 'BreadcrumbList',
-        media: MdKeyboardDoubleArrowRight
+        media: ListTree
       };
     }
   }

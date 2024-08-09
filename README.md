@@ -107,6 +107,31 @@ return (
     </Container>
   )
 ```
+## Usage on the front-end with Next Js App Router
+
+Create a shared `SchemaMarkup` component that can be used in any page in your React app.
+
+```typescript
+'use client';
+
+import { NextSchemaScript } from '@operationnation/sanity-plugin-schema-markup';
+import { Schema } from '../types/Types';
+
+type Props = {
+  schema: Schema[];
+};
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+const SchemaMarkup = ({ schema }: Props) => {
+  return (
+	  <NextSchemaScript schema={schema} projectId={projectId as string} dataset={dataset as string} />
+  );
+};
+
+export default SchemaMarkup;
+```
 
 ## Create schema markup script dynamically (optional)
 

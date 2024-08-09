@@ -1,12 +1,12 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineScience } from 'react-icons/md';
+import { FlaskConical } from 'lucide-react';
 import id from '../../common/id';
 
 const howTo = defineType({
   name: 'howToType',
   type: 'object',
   title: 'How To',
-  icon: MdOutlineScience,
+  icon: FlaskConical,
   fields: [
     defineField({
       name: 'type',
@@ -160,7 +160,7 @@ const howTo = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'HowTo',
-        media: MdOutlineScience
+        media: FlaskConical
       };
     }
   }

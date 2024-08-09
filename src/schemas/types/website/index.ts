@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdLanguage } from 'react-icons/md';
+import { Globe } from 'lucide-react';
 import id from '../../common/id';
 import CompanyName from '../../../components/GlobalSetting/CompanyName';
 import Domain from '../../../components/GlobalSetting/Domain';
@@ -10,7 +10,7 @@ const website = defineType({
   name: 'websiteType',
   type: 'object',
   title: 'Website',
-  icon: MdLanguage,
+  icon: Globe,
   fields: [
     defineField({
       name: 'type',
@@ -85,7 +85,7 @@ const website = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Website',
-        media: MdLanguage
+        media: Globe
       };
     }
   }

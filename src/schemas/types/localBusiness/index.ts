@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdBusiness } from 'react-icons/md';
+import { BriefcaseBusiness } from 'lucide-react';
 import LocalBusinessListSelect from './LocalBusinessListSelect';
 import openingHoursSpecification from './openingHoursSpecification';
 import id from '../../common/id';
@@ -13,7 +13,7 @@ const localBusiness = defineType({
   name: 'localBusiness',
   type: 'object',
   title: 'Local Business',
-  icon: MdBusiness,
+  icon: BriefcaseBusiness,
   fields: [
     defineField({
       name: 'type',
@@ -156,7 +156,7 @@ const localBusiness = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'LocalBusiness',
-        media: MdBusiness
+        media: BriefcaseBusiness
       };
     }
   }

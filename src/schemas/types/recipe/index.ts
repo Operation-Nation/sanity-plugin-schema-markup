@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineDinnerDining } from 'react-icons/md';
+import { HandPlatter } from 'lucide-react';
 import id from '../../common/id';
 import review from '../product/review';
 
@@ -7,7 +7,7 @@ const recipe = defineType({
   name: 'recipeType',
   type: 'object',
   title: 'Recipe',
-  icon: MdOutlineDinnerDining,
+  icon: HandPlatter,
   fields: [
     defineField({
       name: 'type',
@@ -249,7 +249,7 @@ const recipe = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Recipe',
-        media: MdOutlineDinnerDining
+        media: HandPlatter
       };
     }
   }

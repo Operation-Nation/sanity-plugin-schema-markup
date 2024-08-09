@@ -1,12 +1,12 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineQuestionAnswer } from 'react-icons/md';
+import { MessageSquareMore } from 'lucide-react';
 import id from '../../common/id';
 
 const faqPage = defineType({
   name: 'faqPageType',
   type: 'object',
   title: 'FAQ Page',
-  icon: MdOutlineQuestionAnswer,
+  icon: MessageSquareMore,
   fields: [
     defineField({
       name: 'type',
@@ -71,7 +71,7 @@ const faqPage = defineType({
       return {
         title: mainEntity && mainEntity.length > 0 ? `FAQs-${mainEntity.length}` : 'No FAQ',
         subtitle: 'FAQ Page',
-        media: MdOutlineQuestionAnswer
+        media: MessageSquareMore
       };
     }
   }

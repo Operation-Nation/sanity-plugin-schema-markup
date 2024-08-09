@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineArticle } from 'react-icons/md';
+import { Newspaper } from 'lucide-react';
 import ArticleListSelect from './ArticleListSelect';
 import id from '../../common/id';
 import Headline from '../../../components/Article/Headline';
@@ -16,7 +16,7 @@ const article = defineType({
   name: 'article',
   type: 'object',
   title: 'Article',
-  icon: MdOutlineArticle,
+  icon: Newspaper,
   fields: [
     defineField({
       name: 'type',
@@ -162,7 +162,7 @@ const article = defineType({
       return {
         title: headline || 'Untitled',
         subtitle: 'Article',
-        media: MdOutlineArticle
+        media: Newspaper
       };
     }
   }

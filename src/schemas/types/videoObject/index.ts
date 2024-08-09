@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdVideoCameraBack } from 'react-icons/md';
+import { Video } from 'lucide-react';
 import id from '../../common/id';
 import CompanyName from '../../../components/GlobalSetting/CompanyName';
 import Logo from '../../../components/GlobalSetting/Logo';
@@ -8,7 +8,7 @@ const videoObject = defineType({
   name: 'videoObjectType',
   type: 'object',
   title: 'Video Object',
-  icon: MdVideoCameraBack,
+  icon: Video,
   fields: [
     defineField({
       name: 'type',
@@ -107,7 +107,7 @@ const videoObject = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'VideoObject',
-        media: MdVideoCameraBack
+        media: Video
       };
     }
   }

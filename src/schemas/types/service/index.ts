@@ -1,12 +1,12 @@
 import { defineType, defineField } from 'sanity';
-import { MdQueryStats } from 'react-icons/md';
+import { ChartLine } from 'lucide-react';
 import id from '../../common/id';
 
 const service = defineType({
   name: 'serviceType',
   type: 'object',
   title: 'Service',
-  icon: MdQueryStats,
+  icon: ChartLine,
   fields: [
     defineField({
       name: 'type',
@@ -170,7 +170,7 @@ const service = defineType({
       return {
         title: serviceType || 'Untitled',
         subtitle: 'Service',
-        media: MdQueryStats
+        media: ChartLine
       };
     }
   }

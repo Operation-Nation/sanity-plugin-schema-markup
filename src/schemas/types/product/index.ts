@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { MdOutlineShoppingBag } from 'react-icons/md';
+import { ShoppingBag } from 'lucide-react';
 import id from '../../common/id';
 import review from './review';
 
@@ -7,7 +7,7 @@ const product = defineType({
   name: 'productType',
   type: 'object',
   title: 'Product',
-  icon: MdOutlineShoppingBag,
+  icon: ShoppingBag,
   fields: [
     defineField({
       name: 'type',
@@ -150,7 +150,7 @@ const product = defineType({
       return {
         title: name || 'Untitled',
         subtitle: 'Product',
-        media: MdOutlineShoppingBag
+        media: ShoppingBag
       };
     }
   }
