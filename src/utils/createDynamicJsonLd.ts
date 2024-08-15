@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import detectSchemaType from './detectSchemaType';
 import matchAndRemoveKeys from './matchAndRemoveKeys';
-import createImgUrl from './createImgUrl';
+import { createImgUrl } from './createImgUrl';
 import { Schema } from '../types/Types';
 
 type JsonLdObject = {

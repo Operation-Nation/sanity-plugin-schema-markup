@@ -1,6 +1,6 @@
 {
   "name": "@operationnation/sanity-plugin-schema-markup",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "the plugin is designed to simplify the process of generating schema markup for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines.",
   "keywords": [
     "sanity",
@@ -23,7 +23,29 @@
       "import": "./dist/index.esm.js",
       "default": "./dist/index.esm.js"
     },
+    "./nextSchemaScript": {
+      "types": "./dist/nextSchemaScript.d.ts",
+      "source": "./src/nextSchemaScript.ts",
+      "import": "./dist/nextSchemaScript.esm.js",
+      "default": "./dist/nextSchemaScript.esm.js"
+    },
+    "./schemaScript": {
+      "types": "./dist/schemaScript.d.ts",
+      "source": "./src/schemaScript.ts",
+      "import": "./dist/schemaScript.esm.js",
+      "default": "./dist/schemaScript.esm.js"
+    },
     "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "nextSchemaScript": [
+        "./dist/nextSchemaScript.d.ts"
+      ],
+      "schemaScript": [
+        "./dist/schemaScript.d.ts"
+      ]
+    }
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
@@ -94,7 +116,7 @@
     "sanity": "^3.18.0",
     "styled-components": "^5.3.11",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.3.2"
+    "typescript": "^5.1.3"
   },
   "peerDependencies": {
     "react": "^18",
