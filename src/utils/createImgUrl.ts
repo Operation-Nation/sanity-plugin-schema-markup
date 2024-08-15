@@ -1,4 +1,4 @@
-const createImgUrl = (projectId: string, dataset: string) => {
+export const createImgUrl = (projectId: string, dataset: string) => {
   const getImgUrl = (assetId?: string) => {
     const imageId = assetId && assetId.substring(assetId.indexOf('-') + 1);
     const imageSplitId = imageId && imageId.split('-');
@@ -12,5 +12,3 @@ const createImgUrl = (projectId: string, dataset: string) => {
     getImgUrl
   };
 };
-
-export default createImgUrl;

@@ -62,8 +62,7 @@ const myDocument = {
 Create a shared `SchemaMarkup` component that can be used in any page in your React app.
 
 ```typescript
-import { SchemaScript } from '@operationnation/sanity-plugin-schema-markup';
-import { Schema } from '../types/Types';
+import { SchemaScript, type Schema } from '@operationnation/sanity-plugin-schema-markup/schemaScript';
 
 type Props = {
   schema: Schema[];
@@ -112,10 +111,8 @@ return (
 Create a shared `SchemaMarkup` component that can be used in any page in your React app.
 
 ```typescript
-'use client';
 
-import { NextSchemaScript } from '@operationnation/sanity-plugin-schema-markup';
-import { Schema } from '../types/Types';
+import { NextSchemaScript, type Schema } from '@operationnation/sanity-plugin-schema-markup/nextSchemaScript';
 
 type Props = {
   schema: Schema[];

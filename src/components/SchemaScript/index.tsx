@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { helmetJsonLdProp } from 'react-schemaorg';
 import { Helmet } from 'react-helmet';
 import { Graph } from 'schema-dts';
@@ -11,7 +11,7 @@ export type SchemaScriptProps = {
   dataset: string;
 };
 
-export const SchemaScript = memo(({ schema, projectId, dataset }: SchemaScriptProps) => {
+export const SchemaScript = React.memo(({ schema, projectId, dataset }: SchemaScriptProps) => {
   const seoMarkup = schema.map(schemaType => createDynamicJsonLd(schemaType, projectId, dataset));
   if (seoMarkup.length === 0) return null;
 

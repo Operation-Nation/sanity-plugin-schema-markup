@@ -1,4 +1,4 @@
-import createImgUrl from '../src/utils/createImgUrl';
+import { createImgUrl } from '../src/utils/createImgUrl';
 
 describe('createImgUrl', () => {
   const projectId = 'your-project-id';
