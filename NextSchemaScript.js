@@ -1,2 +1,2 @@
 // AUTO-GENERATED – DO NOT EDIT
-export * from './dist/nextSchemaScript.esm'
+export * from './dist/nextSchemaScript'

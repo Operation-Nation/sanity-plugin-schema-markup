@@ -1,6 +1,6 @@
 {
   "name": "@operationnation/sanity-plugin-schema-markup",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "the plugin is designed to simplify the process of generating schema markup for various types of content. This plugin is particularly useful for enhancing the structured data of your content, making it more accessible and understandable for search engines.",
   "keywords": [
     "sanity",
@@ -20,20 +20,23 @@
     ".": {
       "types": "./dist/index.d.ts",
       "source": "./src/index.ts",
-      "import": "./dist/index.esm.js",
-      "default": "./dist/index.esm.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     },
     "./nextSchemaScript": {
       "types": "./dist/nextSchemaScript.d.ts",
       "source": "./src/nextSchemaScript.ts",
-      "import": "./dist/nextSchemaScript.esm.js",
-      "default": "./dist/nextSchemaScript.esm.js"
+      "import": "./dist/nextSchemaScript.js",
+      "require": "./dist/nextSchemaScript.cjs",
+      "default": "./dist/nextSchemaScript.js"
     },
     "./schemaScript": {
       "types": "./dist/schemaScript.d.ts",
       "source": "./src/schemaScript.ts",
-      "import": "./dist/schemaScript.esm.js",
-      "default": "./dist/schemaScript.esm.js"
+      "import": "./dist/schemaScript.js",
+      "require": "./dist/schemaScript.cjs",
+      "default": "./dist/schemaScript.js"
     },
     "./package.json": "./package.json"
   },
@@ -47,10 +50,11 @@
       ]
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist",
     "sanity.json",
