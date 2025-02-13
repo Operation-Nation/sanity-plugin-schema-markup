@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.settings",
-  "include": ["./src/**/*", "./package.config.ts", ".eslintrc.cjs","./test"],
+  "include": ["./src/**/*", "./package.config.ts", ".eslintrc.cjs","./test", "jest.config.cjs"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "rootDir": ".",

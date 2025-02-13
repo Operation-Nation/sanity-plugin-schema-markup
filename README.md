@@ -176,6 +176,188 @@ In the code snippet, the `SchemaMarkup` component is defined, which takes in `da
 
 The `createImgUrl` function from the library is used to generate the image URLs for the `image` property of the schema object.
 
+## Customize Schema Markup (New Update!!! v2.0.0)
+
+You can now customize the schema markup configuration using the `schemaMarkupConfig` object. This allows you to define custom schema patterns, query types, and schema type names.
+
+### Configuration Example
+
+```typescript
+//schemaMarkup.config.ts
+import { type Config } from '@operationnation/sanity-plugin-schema-markup';
+
+const movie = {
+  '@type': 'Movie',
+  '@id': 'string',
+  name: 'string',
+  director: { '@type': 'Person', name: 'string' },
+  actor: [{ '@type': 'Person', name: 'string' }],
+  genre: 'string',
+  datePublished: 'date',
+  description: 'string',
+  image: 'string'
+};
+
+const tvSeries = {
+  '@type': 'TVSeries',
+  '@id': 'string',
+  name: 'string',
+  genre: 'string',
+  actor: [{ '@type': 'Person', name: 'string' }],
+  director: { '@type': 'Person', name: 'string' },
+  numberOfSeasons: 'number',
+  numberOfEpisodes: 'number',
+  datePublished: 'date',
+  description: 'string',
+  image: 'string'
+};
+
+export const schemaMarkupConfig: Config = {
+  customSchema: 'partial',
+  patterns: [movie, tvSeries],
+  defineQueryTypes: {
+    settingType: 'globalSetting',
+    socialLinksType: 'socialLinks',
+    authorType: 'person',
+    homePageType: 'homePage',
+    heroType: 'hero'
+  },
+  schemaTypeNames: {
+    article: 'article',
+    breadcrumbList: 'breadcrumbList',
+    faqPage: 'faqPageType',
+    howTo: 'howToType',
+    imageObject: 'imageObjectType',
+    localBusiness: 'localBusiness',
+    organization: 'organization',
+    person: 'personType',
+    product: 'productType',
+    recipe: 'recipeType',
+    review: 'reviewType',
+    socialMediaPosting: 'socialMediaPosting',
+    service: 'serviceType',
+    videoObject: 'videoObjectType',
+    webPage: 'webPageType',
+    website: 'websiteType'
+  }
+};
+```
+### Explanation
+- **customSchema:**
+  * `partial`: to add custom schema patterns without replacing all static schema types. 
+  * `full`: to replace all static schema types with the custom patterns.
+- **patterns:** Define custom schema patterns for specific types.
+Please try to maintain the pattern like this example:
+
+```typescript 
+const movie = {
+  '@type': 'Movie',
+  '@id': 'string',
+  name: 'string',
+  director: { '@type': 'Person', name: 'string' },
+  actor: [{ '@type': 'Person', name: 'string' }],
+  genre: 'string',
+  datePublished: 'date',
+  description: 'string',
+  image: 'string'
+}; 
+```
+- **defineQueryTypes:** Specify document names for dynamic data retrieval. 
+<br/>
+The following are all predefined schemas that we have used in the plugin. You can visit `src/components` and see which components are used with which query data and change the schema name to avoid conflict.
+
+```typescript
+  defineQueryTypes: {
+    settingType: 'globalSetting',
+    socialLinksType: 'socialLinks',
+    authorType: 'person',
+    homePageType: 'homePage',
+    heroType: 'hero'
+  },
+```
+You can rename like this
+
+```typescript
+defineQueryTypes: {
+    settingType: 'settings', //previously was 'globalSetting'
+}
+```
+- **schemaTypeNames:** Predefined schema type names that can be renamed to avoid conflicts.
+This configuration provides flexibility to customize schema markup based on your specific needs. 
+
+```typescript
+schemaTypeNames: {
+    article: 'article',
+    breadcrumbList: 'breadcrumbList',
+    faqPage: 'faqPageType',
+    howTo: 'howToType',
+    imageObject: 'imageObjectType',
+    localBusiness: 'localBusiness',
+    organization: 'organization',
+    person: 'personType',
+    product: 'productType',
+    recipe: 'recipeType',
+    review: 'reviewType',
+    socialMediaPosting: 'socialMediaPosting',
+    service: 'serviceType',
+    videoObject: 'videoObjectType',
+    webPage: 'webPageType',
+    website: 'websiteType'
+  }
+```
+
+These schema types are the predefined static types. You can rename like this
+
+```typescript
+schemaTypeNames: {
+    article: 'articleType', //previously 'article'
+}
+```
+
+Create a config file `schemaMarkup.config.ts` and implement it in both plugin and schema script
+
+```typescript
+//other imports
+import { schemaMarkup } from '@operationnation/sanity-plugin-schema-markup';
+
+import { schemaMarkupConfig } from './schemaMarkup.config';
+
+
+const plugins = [
+  //other plugins
+  schemaMarkup(schemaMarkupConfig),
+]
+```
+
+```typescript
+import {
+  NextSchemaScript,
+  type Schema
+} from '@operationnation/sanity-plugin-schema-markup/nextSchemaScript';
+import { schemaMarkupConfig } from '../../config/schemaMarkup.config';
+
+type Props = {
+  schema: Schema[];
+};
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+const SchemaMarkup = ({ schema }: Props) => {
+  return (
+    <NextSchemaScript
+      schema={schema}
+      projectId={projectId as string}
+      dataset={dataset as string}
+      config={schemaMarkupConfig}
+    />
+  );
+};
+
+export default SchemaMarkup;
+
+```
+
 ## All schema type patterns
 
 <details>

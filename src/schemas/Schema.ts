@@ -1,31 +1,43 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineType } from 'sanity';
 import SchemaTypeSelector from '../components/SchemaTypeSelector';
+import { convertToSchemaType } from '../utils/convertToSchemaType';
+import { Config } from '../config';
 
-const schema = defineType({
-  title: 'Schema Markup',
-  name: 'schemaMarkup',
-  type: 'array',
-  of: [
-    { type: 'article' },
-    { type: 'breadcrumbList' },
-    { type: 'faqPageType' },
-    { type: 'howToType' },
-    { type: 'imageObjectType' },
-    { type: 'localBusiness' },
-    { type: 'organization' },
-    { type: 'personType' },
-    { type: 'productType' },
-    { type: 'recipeType' },
-    { type: 'reviewType' },
-    { type: 'socialMediaPosting' },
-    { type: 'serviceType' },
-    { type: 'videoObjectType' },
-    { type: 'webPageType' },
-    { type: 'websiteType' }
-  ],
-  components: {
-    input: SchemaTypeSelector
+const predefinedTypes = (schemaTypeNames?: Record<string, any>) => {
+  if (!schemaTypeNames) {
+    return [];
   }
-});
+  return Object.entries(schemaTypeNames).map(([_, value]) => ({
+    type: `${value}`
+  }));
+};
+
+const generateSchema = (config: Config) => {
+  if (config.customSchema === 'full' && Array.isArray(config.patterns)) {
+    const schemas = config.patterns
+      .map((pattern: any) => convertToSchemaType(pattern))
+      .filter((schema: any) => schema);
+    return Array.from(new Set([...schemas]));
+  }
+  const schemas = config?.patterns
+    ? config.patterns
+        .map((pattern: any) => convertToSchemaType(pattern))
+        .filter((schema: any) => schema)
+    : [];
+  return Array.from(new Set([...predefinedTypes(config?.schemaTypeNames), ...schemas])); // Ensure unique values
+};
+
+const schema = (config: Config) => {
+  return defineType({
+    title: 'Schema Markup',
+    name: 'schemaMarkup',
+    type: 'array',
+    of: !config?.customSchema ? predefinedTypes(config?.schemaTypeNames) : generateSchema(config),
+    components: {
+      input: SchemaTypeSelector
+    }
+  });
+};
 
 export default schema;

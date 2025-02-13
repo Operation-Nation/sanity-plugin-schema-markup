@@ -1,15 +1,16 @@
 import { StringInputProps, useClient } from 'sanity';
 import { useState, useEffect } from 'react';
 import FormInput from '../FormInput';
+import { apiVersion, settingType } from '../../utils/common';
 
 const CompanyName = (props: StringInputProps) => {
   const { onChange, value } = props;
   const [companyName, setCompanyName] = useState('');
-  const client = useClient({ apiVersion: '2021-06-07' });
+  const client = useClient(apiVersion);
   useEffect(() => {
     const fetchData = async () => {
       await client
-        .fetch("*[_type=='globalSetting'][0]{companyName}")
+        .fetch('*[_type==$settingType][0]{companyName}', { settingType })
         .then(data => setCompanyName(data?.companyName));
     };
     fetchData();

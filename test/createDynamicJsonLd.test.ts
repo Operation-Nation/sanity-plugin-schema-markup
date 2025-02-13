@@ -1,7 +1,9 @@
 import createDynamicJsonLd from '../src/utils/createDynamicJsonLd';
+import { getConfig } from '../src/config';
 
 const projectId = 'exampleProject';
 const dataset = 'exampleDataset';
+const config = getConfig();
 describe('createDynamicJsonLd', () => {
   test('should create JSON-LD with basic properties', () => {
     const schemaObj = {
@@ -10,7 +12,7 @@ describe('createDynamicJsonLd', () => {
       description: 'This is an example product.'
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'Product',
@@ -28,7 +30,7 @@ describe('createDynamicJsonLd', () => {
       }
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'VideoObject',
@@ -50,7 +52,7 @@ describe('createDynamicJsonLd', () => {
       }
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'WebSite',
@@ -95,7 +97,7 @@ describe('createDynamicJsonLd', () => {
       ]
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'Product',
@@ -143,7 +145,7 @@ describe('createDynamicJsonLd', () => {
       }
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     const imgUrl =
       'https://cdn.sanity.io/images/exampleProject/exampleDataset/94ae271bfb22020e0003c4e2990f02f6e20c95f4-812x127.png?fit=max&auto=format'; // Assuming this is the resolved URL
@@ -168,7 +170,7 @@ describe('createDynamicJsonLd', () => {
       }
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     const imgUrl =
       'https://cdn.sanity.io/images/exampleProject/exampleDataset/94ae271bfb22020e0003c4e2990f02f6e20c95f4-812x127.png?fit=max&auto=format'; // Assuming this is the resolved URL
@@ -188,7 +190,7 @@ describe('createDynamicJsonLd', () => {
       }
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     const imgUrl =
       'https://cdn.sanity.io/images/exampleProject/exampleDataset/94ae271bfb22020e0003c4e2990f02f6e20c95f4-812x127.png?fit=max&auto=format'; // Assuming this is the resolved URL
@@ -203,7 +205,7 @@ describe('createDynamicJsonLd', () => {
       sameAs: ['https://www.facebook.com', 'https://linkedin.com', 'https://www.youtube.com/']
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'Organization',
@@ -228,7 +230,7 @@ describe('createDynamicJsonLd', () => {
       ]
     };
 
-    const result = createDynamicJsonLd(schemaObj, projectId, dataset);
+    const result = createDynamicJsonLd(schemaObj, projectId, dataset, config);
 
     expect(result).toEqual({
       '@type': 'BreadcrumbList',
