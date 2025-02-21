@@ -79,11 +79,12 @@ const website = (name = 'websiteType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        websiteName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { websiteName } = selection;
         return {
-          title: name || 'Untitled',
+          title: websiteName || 'Untitled',
           subtitle: 'Website',
           media: Globe
         };

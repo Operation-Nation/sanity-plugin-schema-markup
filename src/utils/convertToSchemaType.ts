@@ -49,6 +49,20 @@ export const convertToSchemaType = (object: Pattern) => {
         name: key,
         ...mapType(key, value)
       }))
-    ]
+    ],
+    preview: {
+      select: {
+        prevName: 'name',
+        title: 'title'
+      },
+      prepare(selection) {
+        const { prevName, title } = selection;
+        return {
+          title: title || prevName || 'Untitled',
+          subtitle: name,
+          media: DocumentIcon
+        };
+      }
+    }
   });
 };

@@ -142,11 +142,12 @@ const person = (name = 'personType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        personName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { personName } = selection;
         return {
-          title: name || 'Untitled',
+          title: personName || 'Untitled',
           subtitle: 'Person',
           media: User
         };

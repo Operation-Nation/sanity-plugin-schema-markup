@@ -154,11 +154,12 @@ const howTo = (name = 'howToType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        howToName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { howToName } = selection;
         return {
-          title: name || 'Untitled',
+          title: howToName || 'Untitled',
           subtitle: 'HowTo',
           media: FlaskConical
         };

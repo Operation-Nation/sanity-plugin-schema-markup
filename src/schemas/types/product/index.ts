@@ -144,11 +144,12 @@ const product = (name = 'productType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        productName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { productName } = selection;
         return {
-          title: name || 'Untitled',
+          title: productName || 'Untitled',
           subtitle: 'Product',
           media: ShoppingBag
         };

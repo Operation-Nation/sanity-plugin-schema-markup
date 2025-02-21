@@ -150,11 +150,12 @@ const localBusiness = (name = 'localBusiness') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        localBusinessName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { localBusinessName } = selection;
         return {
-          title: name || 'Untitled',
+          title: localBusinessName || 'Untitled',
           subtitle: 'LocalBusiness',
           media: BriefcaseBusiness
         };

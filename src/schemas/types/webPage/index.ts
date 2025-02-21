@@ -83,11 +83,12 @@ const webPage = (name = 'webPageType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        webPageName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { webPageName } = selection;
         return {
-          title: name || 'Untitled',
+          title: webPageName || 'Untitled',
           subtitle: 'WebPage',
           media: PanelTop
         };

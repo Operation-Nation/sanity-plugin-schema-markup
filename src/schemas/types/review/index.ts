@@ -112,11 +112,12 @@ const review = (name = 'reviewType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        reviewName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { reviewName } = selection;
         return {
-          title: name || 'Untitled',
+          title: reviewName || 'Untitled',
           subtitle: 'Review',
           media: Star
         };

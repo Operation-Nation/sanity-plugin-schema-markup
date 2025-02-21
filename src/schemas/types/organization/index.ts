@@ -70,11 +70,12 @@ const organization = (name = 'organization') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        organizationName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { organizationName } = selection;
         return {
-          title: name || 'Untitled',
+          title: organizationName || 'Untitled',
           subtitle: 'Organization',
           media: Building
         };

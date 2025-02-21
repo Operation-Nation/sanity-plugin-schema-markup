@@ -243,11 +243,12 @@ const recipe = (name = 'recipeType') => {
     ],
     preview: {
       select: {
-        name: 'name'
+        recipeName: 'name'
       },
-      prepare() {
+      prepare(selection) {
+        const { recipeName } = selection;
         return {
-          title: name || 'Untitled',
+          title: recipeName || 'Untitled',
           subtitle: 'Recipe',
           media: HandPlatter
         };
