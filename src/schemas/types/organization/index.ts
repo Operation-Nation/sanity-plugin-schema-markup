@@ -9,77 +9,79 @@ import Logo from '../../../components/GlobalSetting/Logo';
 import SocialLinks from '../../../components/GlobalSetting/SocialLinks';
 import department from './department';
 
-const organization = defineType({
-  name: 'organization',
-  type: 'object',
-  title: 'Organization',
-  icon: Building,
-  fields: [
-    defineField({
-      name: 'type',
-      title: 'Type',
-      type: 'string',
-      components: {
-        input: OrganizationListSelect
+const organization = (name = 'organization') => {
+  return defineType({
+    name,
+    type: 'object',
+    title: 'Organization',
+    icon: Building,
+    fields: [
+      defineField({
+        name: 'type',
+        title: 'Type',
+        type: 'string',
+        components: {
+          input: OrganizationListSelect
+        },
+        initialValue: 'Organization'
+      }),
+      defineField({
+        name: 'name',
+        title: 'Name',
+        type: 'string',
+        components: {
+          input: CompanyName
+        }
+      }),
+      defineField({
+        name: 'alternateName',
+        title: 'Alternate Name',
+        type: 'string'
+      }),
+      defineField({
+        name: 'url',
+        title: 'Url',
+        type: 'url',
+        components: {
+          input: Domain
+        }
+      }),
+      defineField({
+        name: 'logo',
+        title: 'Logo',
+        type: 'image',
+        components: {
+          input: Logo
+        }
+      }),
+      contactPoint,
+      department,
+      defineField({
+        name: 'sameAs',
+        title: 'Social Profiles',
+        description: 'Add social profile url on each field',
+        type: 'array',
+        of: [{ type: 'string' }],
+        components: {
+          input: SocialLinks
+        }
+      }),
+      id
+    ],
+    preview: {
+      select: {
+        organizationName: 'name'
       },
-      initialValue: 'Organization'
-    }),
-    defineField({
-      name: 'name',
-      title: 'Name',
-      type: 'string',
-      components: {
-        input: CompanyName
+      prepare(selection) {
+        const { organizationName } = selection;
+        return {
+          title: organizationName || 'Untitled',
+          subtitle: 'Organization',
+          media: Building
+        };
       }
-    }),
-    defineField({
-      name: 'alternateName',
-      title: 'Alternate Name',
-      type: 'string'
-    }),
-    defineField({
-      name: 'url',
-      title: 'Url',
-      type: 'url',
-      components: {
-        input: Domain
-      }
-    }),
-    defineField({
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-      components: {
-        input: Logo
-      }
-    }),
-    contactPoint,
-    department,
-    defineField({
-      name: 'sameAs',
-      title: 'Social Profiles',
-      description: 'Add social profile url on each field',
-      type: 'array',
-      of: [{ type: 'string' }],
-      components: {
-        input: SocialLinks
-      }
-    }),
-    id
-  ],
-  preview: {
-    select: {
-      name: 'name'
-    },
-    prepare(selection) {
-      const { name } = selection;
-      return {
-        title: name || 'Untitled',
-        subtitle: 'Organization',
-        media: Building
-      };
     }
-  }
-});
+  });
+};
 
 export default organization;

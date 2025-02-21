@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import article from '../patterns/article';
 import organization from '../patterns/organization';
 import localBusiness from '../patterns/localBusiness';
@@ -19,6 +20,7 @@ import organizationTypeList from '../schemas/types/organization/list/organizatio
 import localBusinessTypeList from '../schemas/types/localBusiness/list/localBusinessTypeList';
 import pageTypeList from '../schemas/types/webPage/list/pageTypeList';
 import { Schema } from '../types/Types';
+import { Config, Pattern } from '../config';
 
 type List =
   | string
@@ -26,6 +28,16 @@ type List =
       optgroup?: string;
       list?: string[];
     };
+
+export const findSchemaPattern = (typeName: string, config: Config): Pattern | undefined => {
+  const { patterns } = config;
+  const matchingPattern =
+    patterns && patterns?.length > 0
+      ? patterns?.find(pattern => typeName === pattern['@type'])
+      : undefined;
+
+  return matchingPattern;
+};
 
 const findSchemaType = (typeList: List[], schemaType: string) => {
   const result = typeList.find(item => {
@@ -58,7 +70,7 @@ const findSchemaType = (typeList: List[], schemaType: string) => {
   return undefined;
 };
 
-const detectSchemaType = (schema: Schema) => {
+const detectSchemaType = (schema: Schema, config: Config) => {
   const { type } = schema;
   switch (type) {
     case findSchemaType(articleTypeList, type):
@@ -94,7 +106,7 @@ const detectSchemaType = (schema: Schema) => {
     case 'VideoObject':
       return videoObject;
     default:
-      return undefined;
+      return findSchemaPattern(type, config);
   }
 };
 

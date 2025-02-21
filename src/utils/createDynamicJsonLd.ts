@@ -3,14 +3,20 @@ import detectSchemaType from './detectSchemaType';
 import matchAndRemoveKeys from './matchAndRemoveKeys';
 import { createImgUrl } from './createImgUrl';
 import { Schema } from '../types/Types';
+import { Config } from '../config';
 
 type JsonLdObject = {
   [key: string]: any;
   '@type': string;
 };
 
-function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: string) {
-  const pattern = detectSchemaType(schemaObj);
+function createDynamicJsonLd(
+  schemaObj: Schema,
+  projectId: string,
+  dataset: string,
+  config: Config
+) {
+  const pattern = detectSchemaType(schemaObj, config);
   const obj = schemaObj;
   const { getImgUrl } = createImgUrl(projectId, dataset);
   const jsonLd: JsonLdObject = obj.id
@@ -77,7 +83,7 @@ function createDynamicJsonLd(schemaObj: Schema, projectId: string, dataset: stri
             const imgUrl = getImgUrl(value?.logo?.asset?._ref);
             jsonLd[prop] = {
               '@type': value?.type,
-              strLogo: imgUrl,
+              logo: imgUrl,
               ...restValue
             };
           } else if (value?._type === 'image') {

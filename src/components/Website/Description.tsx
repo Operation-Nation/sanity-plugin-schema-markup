@@ -1,14 +1,18 @@
 import { StringInputProps, useClient, set } from 'sanity';
 import { useEffect } from 'react';
 import { Stack } from '@sanity/ui';
+import { apiVersion } from '../../utils/common';
+import { getConfig } from '../../config';
 
 const Description = (props: StringInputProps) => {
   const { onChange, value, renderDefault } = props;
-  const client = useClient({ apiVersion: '2021-06-07' });
+  const client = useClient(apiVersion);
+  const homePageType = getConfig()?.defineQueryTypes?.homePageType || 'homePage';
+
   useEffect(() => {
     const fetchData = async () => {
       await client
-        .fetch("*[_type=='homePage'][0]{'description':seo.metaDescription}")
+        .fetch("*[_type==$homePageType][0]{'description':seo.metaDescription}", { homePageType })
         .then(data => {
           const description = data?.description;
           if (description && !value) {
@@ -17,7 +21,7 @@ const Description = (props: StringInputProps) => {
         });
     };
     fetchData();
-  }, [client, onChange, value]);
+  }, [client, onChange, value, homePageType]);
 
   return <Stack>{renderDefault(props)}</Stack>;
 };

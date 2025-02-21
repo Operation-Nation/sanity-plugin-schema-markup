@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Article } from './Article';
 import { BreadcrumbList } from './BreadcrumbList';
 import { FAQPage } from './FAQPage';
@@ -26,4 +27,5 @@ export type Schema = Article &
   SocialMediaPosting &
   VideoObject &
   WebPage &
-  WebSite;
+  WebSite &
+  Record<string, any>;

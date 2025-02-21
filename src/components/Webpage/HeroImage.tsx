@@ -1,6 +1,8 @@
 import { ObjectInputProps, useFormValue, set, useClient } from 'sanity';
 import { Stack } from '@sanity/ui';
 import { useState, useEffect } from 'react';
+import { apiVersion } from '../../utils/common';
+import { getConfig } from '../../config';
 
 type ImageType = {
   _type?: string;
@@ -19,17 +21,21 @@ const HeroImage = (props: ObjectInputProps) => {
   const { renderDefault, onChange, value } = props;
   const hero = useFormValue(['hero']) as HeroProps;
   const [heroImage, setHeroImage] = useState<ImageType | undefined>(undefined);
-  const client = useClient({ apiVersion: '2021-06-07' });
+  const client = useClient(apiVersion);
+  const heroType = getConfig()?.defineQueryTypes?.heroType || 'hero';
   useEffect(() => {
     const fetchData = async (ref: string) => {
       await client
-        .fetch("*[_type=='hero' && _id==$ref][0]{'image': contentMediaSplit.image}", { ref })
+        .fetch("*[_type==$heroType && _id==$ref][0]{'image': contentMediaSplit.image}", {
+          ref,
+          heroType
+        })
         .then(data => setHeroImage(data?.image));
     };
     if (hero?._ref) {
       fetchData(hero._ref);
     }
-  }, [hero, client]);
+  }, [hero, client, heroType]);
   useEffect(() => {
     if (heroImage && typeof heroImage === 'object' && !value) {
       const createImageRefs = {
